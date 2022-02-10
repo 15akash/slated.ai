@@ -3,11 +3,23 @@
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
+    "paths": {
+      "@env": [
+        "environments/environment"
+      ],
+      "@shared/*": [
+        "app/shared/*"
+      ],
+      "@core/*": [
+        "src/app/core/*"
+      ],
+      "@assets/*": [
+        "assets/*"
+      ]
+    },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
     "strict": true,
-    "noImplicitOverride": true,
-    "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
@@ -19,7 +31,7 @@
     "target": "es2017",
     "module": "es2020",
     "lib": [
-      "es2020",
+      "es2018",
       "dom"
     ]
   },
