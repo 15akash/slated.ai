@@ -1,0 +1,30 @@
+.time-marker {
+  position: absolute;
+  color: #ffffff;
+  width: 93.5%;
+  display: flex;
+  margin-left: 20px;
+  font-family: Lexend;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0.05em;
+  top: 0;
+
+  .current-time {
+    background-color: #2b6af5;
+    padding: 4px 15px;
+    display: flex;
+    justify-content: center;
+    border-radius: 0px 30px 30px 0px;
+  }
+
+  .line-marker {
+    width: 100%;
+    position: absolute;
+    border-bottom: 1px solid #2b6af5;
+    bottom: 11px;
+    margin-left: 75px;
+  }
+}

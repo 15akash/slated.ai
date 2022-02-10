@@ -1,0 +1,95 @@
+<div class="page-con">
+    <div class="menu-con">
+        <app-menu selectedPage="none"></app-menu>
+    </div>
+    <div class="preview-con">
+        <div class="content-con">
+            <div class="header">
+                <app-back-btn [hideTxt]="false" (click)="onBackClick()"></app-back-btn>
+            </div>
+            <div class="full-field">
+                <div class="list-input-title">To:</div>
+                <app-email-selection [selectedItems]="gf.attendees.value" (select)="onChangeAttendee($event)"
+                    (remove)="onChangeAttendee($event)">
+                </app-email-selection>
+            </div>
+            <div class="full-field">
+                <div class="list-input-title">Subject:</div>
+                <mat-form-field class="form-field title-field" appearance="outline">
+                    <input type="text" matInput value="{{gf.name.value}}" placeholder="Meeting title" autocomplete="off"
+                        spellcheck="false">
+                    <mat-icon class="copy-icon" matSuffix svgIcon="copy" aria-hidden="false" aria-label="SVG icon"
+                        matTooltip="Copy title" [matTooltipPosition]="'below'" (click)="copyTitle($event)">
+                    </mat-icon>
+                </mat-form-field>
+            </div>
+            <div class="email-content-field">
+                <mat-icon class="copy-icon" matPrefix svgIcon="copy" aria-hidden="false" aria-label="SVG icon"
+                    matTooltip="Copy email content" [matTooltipPosition]="'below'" (click)="copyEmailContent($event)">
+                </mat-icon>
+                <div class="editor" contenteditable="true" #editor>
+                    <p class="highlight">Hi,</p>
+                    <p *ngIf="!!gf.showTimeslots.value">Hope you are doing well! Do the following times work for you? If
+                        so, please click on them to
+                        select:</p>
+                    <p *ngIf="!gf.showTimeslots.value">Hope you are doing well! I've invited you for a meeting.</p>
+                    <div class="timeslot-list-con" *ngIf="gf.showTimeslots.value">
+                        <app-time-slot class="timeslot-list-item-con" *ngFor="let item of gf.timeslots.value"
+                            [data]="item" theme="light" type="email">
+                        </app-time-slot>
+                    </div>
+                    <div class="editor-inline" *ngIf="gf.allowInviteeBestTime.value">
+                        <span *ngIf="gf.showTimeslots.value">If not, please click here</span>
+                        <span *ngIf="!gf.showTimeslots.value">Please click here</span>
+                        <div contentEditable="false" class="link editor-inline">
+                            <a href="{{meetingLink}}" target="_blank">meeting link</a>
+                            <mat-icon class="link-icon" svgIcon="link" aria-hidden="false" aria-label="SVG icon">
+                            </mat-icon>
+                        </div>
+                        <span>to find a best time that would work for both of us.</span>
+                    </div>
+                    <div class="editor-inline" *ngIf="!gf.allowInviteeBestTime.value">
+                        <span *ngIf="!gf.showTimeslots.value">Please RSVP by clicking here:</span>
+                        <span *ngIf="!!gf.showTimeslots.value">You can find the meeting details here:</span>
+                        <div contentEditable="false" class="link editor-inline">
+                            <a href="https://app.myslate.us/test" target="_blank">meeting link</a>
+                            <mat-icon class="link-icon" svgIcon="link" aria-hidden="false" aria-label="SVG icon">
+                            </mat-icon>
+                        </div>
+                    </div>
+                    <p class="highlight">Thank you! <br>{{user.name||user.email}}</p>
+                </div>
+            </div>
+            <div class="slide-input-con">
+                <div *ngIf="!!gf.timeslots.value.length"
+                    style="display: flex;align-items: center;margin-right: 15px;margin-bottom: 15px;">
+                    <mat-slide-toggle class="slide-input" (change)="onToggle($event,'showTimeslots')"
+                        [color]="'primary'" [checked]="gf.showTimeslots.value" [disableRipple]="true">
+                        Show
+                    </mat-slide-toggle>
+                    <div class="numTimeslot-field">
+                        <app-list-input class="list-input" [displayOptions]="numTimeslotOptions"
+                            [selectedItem]="gf.numTimeslots.value" displayType="inline"
+                            (change)="onSelect($event,'numTimeslot')">
+                        </app-list-input>
+                    </div>
+                    <span class="field-text">timeslots on email</span>
+                </div>
+                <mat-slide-toggle *ngIf="!!gf.timeslots.value.length" class="slide-input" style="margin-bottom: 15px;"
+                    (change)="onToggle($event,'allowInviteeBestTime')" [color]="'primary'"
+                    [checked]="gf.allowInviteeBestTime.value" [disableRipple]="true">
+                    Allow invitees to find a mutually convenient time (if the given times don't work for them)
+                </mat-slide-toggle>
+            </div>
+        </div>
+        <div class="action-con">
+            <button class="blue-btn narrow action-btn" type="button" mat-button (click)="startInviteEmail()"
+                [disabled]="!gf.attendees.value.length">
+                Send email
+            </button>
+            <button class="white-btn narrow action-btn" type="button" mat-button (click)="startCancel()">
+                Cancel
+            </button>
+        </div>
+    </div>
+</div>

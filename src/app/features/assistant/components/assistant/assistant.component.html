@@ -1,0 +1,68 @@
+<div class="assistant-con">
+  <div class="header-con">
+    <mat-icon
+      *ngIf="showBack"
+      class="back-icon"
+      svgIcon="down-arrow"
+      aria-hidden="false"
+      aria-label="down-arrow svg icon"
+      (click)="onBackClick()"
+    >
+    </mat-icon>
+    <div class="title" [ngClass]="{ center: centerAlignTitle }">
+      {{ title }}
+    </div>
+    <div class="more-con" (click)="showMoreList()" style="display: none">
+      <mat-icon
+        class="more-icon"
+        svgIcon="more-horizontal"
+        aria-hidden="false"
+        aria-label="more-horizontal svg icon"
+      >
+      </mat-icon>
+    </div>
+  </div>
+  <div class="content-con">
+    <app-intro *ngIf="view == 'intro'"></app-intro>
+    <app-meeting
+      *ngIf="view == 'meeting'"
+      [meetingData]="meetingData"
+    ></app-meeting>
+    <app-person *ngIf="view == 'person'"></app-person>
+  </div>
+  <img
+    id="chalkmark_bg_1"
+    src="../../../../../assets/assistant/blue-round.png"
+    alt="blue-round"
+  />
+  <img
+    id="chalkmark_bg_2"
+    src="../../../../../assets/assistant/yellow-scribble.png"
+    alt="yellow-scribble"
+  />
+  <div class="more-list-con" [ngClass]="{ open: isShowingMore }">
+    <div class="list-close-con" (click)="closeMoreList()">
+      <mat-icon
+        class="close-icon"
+        svgIcon="close-gray"
+        aria-hidden="false"
+        aria-label="close svg icon"
+      >
+      </mat-icon>
+    </div>
+    <div
+      class="more-list-item"
+      *ngFor="let item of moreList"
+      (click)="onMoreItemClick(item)"
+    >
+      <mat-icon
+        class="list-icon"
+        svgIcon="{{ item.icon }}"
+        aria-hidden="false"
+        aria-label="close svg icon"
+      >
+      </mat-icon>
+      <div class="list-item-text">{{ item.displayName }}</div>
+    </div>
+  </div>
+</div>

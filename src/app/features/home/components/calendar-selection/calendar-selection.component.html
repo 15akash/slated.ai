@@ -1,0 +1,20 @@
+<div class="calendar-selection-con unselectable" mat-button *ngIf="displayOptions.length==1">
+    <span>{{selectedItem.displayName}}</span>
+</div>
+<div class="calendar-selection-con" mat-button [matMenuTriggerFor]="calendarSelectionMenu" (menuOpened)="onOpenMenu()"
+    (menuClosed)="onCloseMenu()" *ngIf="displayOptions.length>1">
+    <span>{{selectedItem.displayName}}</span>
+    <mat-icon class="down-arrow-icon" [ngClass]="{'open':isMenuOpen}" svgIcon="down-arrow" aria-hidden="false"
+        aria-label="down-arrow svg icon">
+    </mat-icon>
+</div>
+<mat-menu class="calendar-menu" #calendarSelectionMenu="matMenu" xPosition="after" yPosition="below">
+    <div class="menu-con" (click)="onMenuClick($event)">
+        <section class="options-con" #scrollCon>
+            <div class="option-item" *ngFor="let item of displayOptions;let i=index;"
+                [ngClass]="{'highlighted':isMenuOpen && (item._id==highlightId)}" (click)="onSelect(item, i)">
+                <span>{{item.displayName}}</span>
+            </div>
+        </section>
+    </div>
+</mat-menu>

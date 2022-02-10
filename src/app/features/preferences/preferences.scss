@@ -1,0 +1,107 @@
+.page-con {
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(180deg, #EFF4FF 0%, #FCFDFF 66.03%, #FFFFFF 100%), #FFFFFF;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+.preference-con {
+    width: 90vw;
+    max-width: 1100px;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    align-items: center;
+}
+.skip-btn{
+    padding: 35px 0;
+}
+
+#logo {
+    // width: 25%;
+    margin: 30px 0;
+    height: 75px;
+}
+.sub-title{
+    color: var(--primary-text-gray);
+    font-size: 14px;
+    font-weight: 300;
+    margin-top: 60px;
+}
+.title{
+    color: var(--primary-text-black);
+    font-size: 24px;
+    font-weight: 500;
+    margin: 30px auto 0px auto;
+}
+
+
+.chalkmark_bg{position: absolute;}
+
+.page-number{
+    font-size: 16px;
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 30px;
+}
+.page-number .txt{padding: 0 10px;}
+.page-number .txt span{
+    font-size: 24px;
+    color: var(--primary-text-black);
+    font-weight: 600;
+}
+.page-number .left-arrow-icon, .page-number .right-arrow-icon{
+    width: 15px;
+    height: 15px;
+    padding: 5px;    
+    cursor: pointer;
+}
+.page-number .left-arrow-icon, .page-number .right-arrow-icon
+.page-number .left-arrow-icon{transform: rotate(90deg);padding: 5px 0px 5px 5px;}
+.page-number .right-arrow-icon{transform: rotate(-90deg);padding: 5px 5px 5px 0;}
+.page-number .left-arrow-icon.disabled, .page-number .right-arrow-icon.disabled{
+    opacity: 0.2;
+    cursor: auto;
+}
+.page-number .left-arrow-icon:hover, .page-number .right-arrow-icon:hover{
+    color: var(--primary-blue);
+}
+.page-number .left-arrow-icon.disabled:hover, .page-number .right-arrow-icon.disabled:hover{
+    color: inherit;
+}
+
+
+
+.inline-dropdown-con{
+    padding: 30px 0 60px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+app-inline-dropdown{
+    padding-bottom: 15px;
+    margin-left: 10px;
+}
+
+.mat-menu-panel{
+    box-shadow: 0px 20px 30px rgba(34, 41, 55, 0.05);
+    border-radius: 5px !important;
+    margin-top: 15px;  
+  }
+  
+::ng-deep .mat-simple-snackbar-action{
+    color: var(--assistant-yellow) !important;
+}
+::ng-deep .mat-simple-snackbar{
+    font-family: 'Lexend',sans-serif;
+    font-weight: 300;
+    color: var(--border-lightgray);
+}
+::ng-deep .mat-snack-bar-container{
+    background-color: var(--assistant-bg);
+}

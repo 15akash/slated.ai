@@ -1,0 +1,87 @@
+@import '../../assistant.scss';
+
+.view-con{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;    
+}
+.title-con,.profile-con{
+    border-bottom: 1px solid var(--assistant-border-gray);
+}
+
+.title-con{
+    display: flex;
+    align-items: center;
+    padding-bottom: 15px;
+    padding-top: 15px;
+}
+    .name-con{
+        padding-left: 15px;
+    }
+    .name-title{
+        color: var(--assistant-text-white);
+        font-size: 16px;
+    }
+    .name-subtitle{
+        color: var(--assistant-text-gray);
+        padding-top: 5px;
+    }
+
+.profile-con{
+    padding-bottom: 15px;
+    padding-top: 15px;
+}
+.profile-list-item{
+    display: flex;
+    align-items: center;
+    padding: 7.5px 0 7.5px 0;
+}
+
+.icon-con{
+    background: rgba(255, 255, 255, 0.1);
+    width: 30px;
+    height: 30px;
+    border-radius: 15px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;   
+}
+.profile-icon{
+    color: white;
+    width: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.profile-item{    
+    padding-left: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;    
+    color: white;
+    font-size: 12px;
+}
+.link-icon{
+    color: white;
+    width: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+.profile-list-item.clickable{cursor: pointer;}
+.profile-list-item.clickable:hover .profile-icon{color: var(--assistant-yellow);}
+.profile-list-item.clickable:hover .link-icon{color: var(--assistant-yellow);display: flex;}
+.profile-list-item.clickable:hover .profile-item{color: var(--assistant-yellow);}
+
+
+.previous-meeting-con{
+    padding: 15px 0;
+}
+
+
+

@@ -1,1 +1,375 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '~@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$slated-mvp-webapp-primary: mat.define-palette(mat.$indigo-palette);
+$slated-mvp-webapp-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$slated-mvp-webapp-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$slated-mvp-webapp-theme: mat.define-light-theme((
+  color: (
+    primary: $slated-mvp-webapp-primary,
+    accent: $slated-mvp-webapp-accent,
+    warn: $slated-mvp-webapp-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($slated-mvp-webapp-theme);
+
 /* You can add global styles to this file, and also import other style files */
+body{
+    margin: 0;
+    color: #767676;
+    font-size: 14px;
+    font-family: 'Lexend', sans-serif;
+    font-smooth: antialiased;
+    -webkit-font-smoothing:antialiased;
+}
+body {
+    --primary-blue: #2B6AF5;
+    --disabled-blue: #DCE8FF;
+
+    --primary-text-black: #2E2E2E;
+    --primary-text-gray: #767676;
+    --secondary-text-gray: #8E95A5;
+    --input-text-gray: #ADADAD;
+    --input-text-green: #35AE96;
+
+    --primary-error-red: #E34B4B;  
+
+    --border-lightgray: #F0F2F6;
+
+    --bg-lightgray: #F5F9FF;
+
+    --assistant-yellow: #FFDC8F;
+    --assistant-bg: #2E2E2E;
+    --assistant-text-black: #2E2E2E;
+    --assistant-text-white: white;
+    --assistant-text-gray: #B2B2B2;
+    --assistant-border-gray: #3F3F42;
+
+    --icon-gray: #BBC4D3;
+    --icon-yellow: #FFDC8F;
+    --icon-bg-lightyellow: rgba(255, 220, 143, 0.2);
+    --icon-blue: #8FC9FF;
+    --icon-bg-lightblue: rgba(143, 201, 255, 0.1);
+    --icon-green: #94E5D5;
+    --icon-bg-lightgreen: rgba(148, 229, 213, 0.1);
+    --icon-orange: #FA7963;
+
+    --status-yellow: #FABF3D;
+    --status-green:#4DC5AD;
+    --status-blue:#8FC9FF;
+    --status-orange:#FA7963;
+
+    --status-yellow-bg: fff5df;
+    --status-green-bg:rgba(148, 229, 213, 0.1);
+    --status-blue-bg:rgba(143, 201, 255, 0.1);
+    --status-orange-bg:#fa796326;
+}
+html, body { height: 100%; }
+body { margin: 0; 
+  font-family: 'Lexend', sans-serif !important;
+}
+main {
+  position: relative;
+}
+
+::-webkit-scrollbar {
+  width: 0;  /* Remove scrollbar space */
+  background: transparent;  /* Optional: just make scrollbar invisible */
+}
+::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+
+.blue-btn{
+  background-color: var(--primary-blue);
+  color: white;
+  border-radius: 5px !important;
+  min-height: 50px;
+  font-family: 'Lexend', sans-serif !important;
+  max-width: 430px;
+  width: 100%;
+  font-weight: 400;
+  font-size: 16px;
+  border-width: 0;
+  cursor: pointer;
+}
+.blue-btn.mat-button-disabled{
+  color: white !important;
+  background-color: var(--disabled-blue);
+}
+.white-btn{
+  background-color: white;
+  color: var(--primary-blue);
+  border-radius: 5px !important;
+  border: 1.5px solid var(--primary-blue) !important;
+  height: 50px;
+  font-family: 'Lexend', sans-serif !important;
+  max-width: 430px;
+  width: 100%;
+  font-weight: 400;
+}
+.white-btn.mat-button-disabled{
+  color: var(--disabled-blue) !important;
+  border: 1.5px solid var(--disabled-blue) !important;
+}
+.blue-btn.narrow,.white-btn.narrow{
+  min-height: 45px;
+  min-width: 200px;
+}
+
+.gray-btn{
+  background-color: white;
+  color: var(--primary-text-black);
+  border-radius: 5px !important;
+  border: 1px solid #F0F2F6 !important;
+  height: 38px;
+  font-family: 'Lexend', sans-serif !important;
+  max-width: 175px;
+  width: 100%;
+  font-size: 14px;
+  font-weight: 300;
+  overflow: hidden !important;
+}
+
+
+.assistant-gray-btn{
+  background-color: transparent;
+  color: var(--assistant-text-gray);
+  border-radius: 5px !important;
+  border: 1px solid var(--assistant-border-gray) !important;
+  height: 38px;
+  font-family: 'Lexend', sans-serif !important;
+  max-width: 175px;
+  width: 100%;
+  font-size: 14px;
+  font-weight: 300;
+  overflow: hidden !important;
+}
+.assistant-gray-btn:hover{
+  cursor: pointer;
+  border: 1px solid var(--assistant-text-gray) !important;
+  color: var(--assistant-text-white);
+}
+.assistant-gray-btn.mat-button-disabled{
+  color: var(--assistant-text-gray) !important;
+  opacity: 0.5; 
+}
+.assistant-gray-btn.mat-button-disabled:hover{
+  border: 1px solid var(--assistant-border-gray) !important;
+}
+
+
+.assistant-white-btn{
+  // background-color: transparent;
+  // color: var(--assistant-text-gray);
+  background-color: var(--assistant-text-white);
+  color: var(--assistant-text-black);
+  border-radius: 5px !important;
+  border: 1px solid var(--assistant-border-gray) !important;
+  height: 38px;
+  font-family: 'Lexend', sans-serif !important;
+  max-width: 175px;
+  width: 100%;
+  font-size: 14px;
+  font-weight: 300;
+  overflow: hidden !important;
+}
+.assistant-white-btn:hover{
+  cursor: pointer;
+  color: var(--primary-blue);
+}
+.assistant-white-btn.mat-button-disabled{
+  color: var(--assistant-text-gray) !important;
+  opacity: 0.5; 
+}
+.assistant-white-btn.mat-button-disabled:hover{
+  border: 1px solid var(--assistant-border-gray) !important;
+}
+
+
+
+
+.blue-text-btn{
+  color: var(--primary-blue);
+  font-size: 13px;
+  font-weight: 400;
+  cursor: pointer;
+  font-family: 'Lexend',sans-serif;
+  white-space: nowrap;
+}
+.blue-text-btn.disabled{
+  cursor: auto;
+  color: var(--disabled-blue);
+}
+.gray-text-btn{
+  color: var(--primary-text-gray);
+  font-size: 13px;
+  font-weight: 400;
+  cursor: pointer;
+  font-family: 'Lexend',sans-serif;
+  white-space: nowrap;
+}
+.gray-text-btn.disabled{
+  cursor: auto;
+  color: var(--secondary-text-gray);
+  opacity: 0.3;
+}
+
+
+.red-btn{
+  background-color: white;
+  color: var(--primary-error-red);
+  border-radius: 5px !important;
+  border: 1.5px solid var(--primary-error-red) !important;
+  height: 50px;
+  font-family: 'Lexend', sans-serif !important;
+  max-width: 430px;
+  width: 100%;
+  font-weight: 400;
+}
+.red-btn.mat-button-disabled{
+  color: var(--disabled-blue) !important;
+  border: 1.5px solid var(--disabled-blue) !important;
+}
+
+
+.input-icon {
+  color: var(--primary-blue);
+  font-size: 100% !important;
+  width: 20px !important;
+  padding-left: 5px;
+}
+.error-icon{
+  color: var(--primary-error-red);
+}
+.mat-error{
+  font-family: 'Lexend', sans-serif !important;
+  font-size: 11px;
+  font-weight: 300;
+  color: var(--primary-error-red);
+}
+
+
+/*-----input------------------*/
+.mat-form-field-label{
+  color: var(--primary-text-gray);
+  font-weight: 300 !important;
+  padding-left: 12px !important;
+  padding-right: 10px !important;
+  width: calc(100% - 22px) !important;
+}
+.mat-input-element{
+  font-family: 'Lexend', sans-serif !important;
+  caret-color: var(--primary-blue);
+  position: relative;
+  bottom: 4px;
+  padding-left: 12px !important;
+  padding-right: 10px !important;
+  width: calc(100% - 22px) !important;
+  font-weight: 300 !important;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline-thick .mat-form-field-outline-start, 
+.mat-form-field-appearance-outline .mat-form-field-outline-thick .mat-form-field-outline-end, 
+.mat-form-field-appearance-outline .mat-form-field-outline-thick .mat-form-field-outline-gap {
+  border-width: 1px !important;  
+  color: var(--primary-blue);
+}
+.mat-form-field-appearance-outline .mat-form-field-outline-thick .mat-form-field-outline-start, .mat-form-field-appearance-outline .mat-form-field-outline-thick .mat-form-field-outline-end, .mat-form-field-appearance-outline .mat-form-field-outline-thick .mat-form-field-outline-gap {
+  border-width: 1px !important;  
+  color: var(--primary-blue);
+}
+.mat-form-field-appearance-outline.mat-form-field-invalid.mat-form-field-invalid .mat-form-field-outline-thick .mat-form-field-outline-start, .mat-form-field-appearance-outline.mat-form-field-invalid.mat-form-field-invalid .mat-form-field-outline-thick .mat-form-field-outline-end, .mat-form-field-appearance-outline.mat-form-field-invalid.mat-form-field-invalid .mat-form-field-outline-thick .mat-form-field-outline-gap {
+  border-width: 1px !important;
+  color: var(--primary-error-red);  
+}
+.mat-form-field.mat-focused .mat-form-field-label{
+   color: var(--primary-blue);   
+}
+.mat-form-field.mat-form-field-invalid .mat-form-field-label{
+  color: var(--primary-error-red);  
+}
+
+/*---check box------*/
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, .mat-checkbox-checked.mat-accent .mat-checkbox-background{
+  background-color: var(--primary-blue);
+}
+.mat-checkbox-frame{
+  border-width: 1px !important;
+  border-color: #DDDDDD;    
+}
+.mat-checkbox-layout .mat-checkbox-label{
+  font-family: 'Lexend';
+  font-weight: 300;  
+  margin-left: 3px;
+  width: 100%;
+}
+.mat-checkbox-checked .mat-checkbox-layout .mat-checkbox-label{
+  font-weight: 500;
+  color: var(--primary-text-black);
+}
+.mat-checkbox{width: 100%;}
+.mat-checkbox .mat-checkbox-layout{width: 100%;padding: 7.5px 0;}
+.mat-checkbox .mat-checkbox-layout .mat-checkbox-label{width: 100%;}
+
+
+/*----slide toggle input---------*/ 
+.mat-slide-toggle .mat-slide-toggle-content{
+  font-family: 'Lexend',sans-serif;
+  font-weight: 300;
+  color: var(--secondary-text-gray);
+}
+.mat-slide-toggle.mat-checked .mat-slide-toggle-content{
+  color: var(--primary-text-black);
+}
+.mat-slide-toggle .mat-slide-toggle-bar{
+  height: 100%;
+  border-radius: 50px;
+  background-color: var(--border-lightgray) !important;
+}
+.mat-slide-toggle.mat-checked .mat-slide-toggle-bar{
+  background-color: var(--border-lightgray) !important;
+}
+.mat-slide-toggle.mat-primary.mat-checked .mat-ripple-element{
+  background-color: var(--primary-blue);
+}
+.mat-slide-toggle.mat-primary.mat-checked .mat-slide-toggle-thumb{
+  background-color: var(--primary-blue);
+}
+.mat-slide-toggle-thumb-container{
+  height: 22px !important;
+  width: 22px !important;
+  top:2px !important;
+}
+.mat-slide-toggle.mat-checked .mat-slide-toggle-thumb-container{
+  left: -1px !important;
+}
+.mat-slide-toggle .mat-slide-toggle-thumb-container{
+  left: 1px !important;
+}
+.mat-slide-toggle .mat-ripple-element{
+  display: none;
+}
+
+
+

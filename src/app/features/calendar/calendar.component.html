@@ -1,0 +1,50 @@
+<div class="page-con">
+  <div class="calendar-view-selection">
+    <div class="date-picker">
+      <mat-icon
+        (click)="previousMonth()"
+        class="left-icon"
+        svgIcon="down-arrow"
+      >
+      </mat-icon>
+      <div class="display-month" (click)="showDateInput()">
+        {{ fullCurrentMonth }}
+      </div>
+      <mat-icon (click)="nextMonth()" class="right-icon" svgIcon="down-arrow">
+      </mat-icon>
+      <app-date-input
+        *ngIf="showDatePicker"
+        class="date-input"
+      ></app-date-input>
+    </div>
+
+    <div
+      class="view-dropdown"
+      ng-model="myBlock"
+      (click)="toggleViewDropdown()"
+    >
+      <div class="toggle-view">
+        Monthly
+        <mat-icon *ngIf="!isViewShown" class="down-icon" svgIcon="down-arrow">
+        </mat-icon>
+        <mat-icon *ngIf="isViewShown" class="up-icon" svgIcon="down-arrow">
+        </mat-icon>
+      </div>
+      <div class="dropdown-container" *ngIf="isViewShown">
+        <p>Daily</p>
+        <p>Weekly</p>
+        <p>Monthly</p>
+      </div>
+    </div>
+  </div>
+  <div class="calendar-portion">
+    <!-- <app-weekly [meetings]="meetings"></app-weekly> -->
+    <!-- <app-monthly
+      [calendarDates]="calendarDates"
+      [previousMonthDays]="previousMonthDays"
+      [meetings]="meetings"
+    >
+    </app-monthly> -->
+    <app-daily [meetings]="meetings"></app-daily>
+  </div>
+</div>

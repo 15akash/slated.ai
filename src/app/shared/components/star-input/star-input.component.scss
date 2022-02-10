@@ -1,0 +1,45 @@
+.star-con{
+    width: 20px;
+    height: 20px;
+    position: relative;
+    cursor: pointer;
+}
+.star-con.not-editable{
+    cursor: auto;
+}
+.star-con .star-icon{
+    width: 20px;
+    height: 20px;
+    // color: var(--icon-gray);
+    color: white;
+}
+.star-con .star-icon.value0{
+    color: white;
+}
+.star-con .star-icon.value2{
+    // color: var(--icon-gray);
+    color: var(--assistant-yellow);
+}
+.star-con.not-editable .star-icon{
+    filter: grayscale(1);
+}
+
+.star-con .overlay{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    top:0;
+    left: 0;
+}
+.star-con .overlay .click-overlay{
+    width: 33%;
+    height: 100%;
+    position: absolute;
+    top:0;
+}
+.star-con .overlay .click-overlay-0{left: 0;}
+.star-con .overlay .click-overlay-1{left: 33.33%;}
+.star-con .overlay .click-overlay-2{left: 66.67%;}
+
+

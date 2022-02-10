@@ -1,0 +1,50 @@
+<div class="inline-dropdown-con">
+    <div class="title">{{title}}</div>
+    <div class="inline-input-hold" (mousemove)="updateCursor($event)" (mouseover)="showCursor()"
+        (mouseout)="hideCursor()" (menuOpened)="onOpenMenu()" (menuClosed)="onCloseMenu()" [matMenuTriggerFor]="menu"
+        tabindex="{{tabindex*1}}" #inlineInputHold>
+        <div class="inline-placeholder" *ngIf="!selectedOptions.length">{{placeholder}}</div>
+        <div class="inline-selected-list" *ngIf="!!selectedOptions.length">
+            {{selectionDisplayString}}
+        </div>
+        <img src="../../../../../assets/chalk-marks/chalk_underline_black.png" alt="chalk-underline-black">
+    </div>
+    <div class="title titleSuffix">{{titleSuffix}}</div>
+</div>
+<div class="cursor" #mouseCursor>
+    <img src="../../../../../assets/icons/cursor.png" alt="cursor">
+</div>
+<mat-menu #menu="matMenu" xPosition="after" yPosition="below" class="inline-dropdown-menu">
+    <ng-template matMenuContent>
+        <div class="menu-con" (click)="onMenuClick($event)">
+            <div class="search-con" *ngIf="showSearch">
+                <app-search-input (search)="onSearch($event)" [showSelectAll]="!hideSelectAll"
+                    (selectAll)="setAll(true)"></app-search-input>
+            </div>
+            <section class="options-con" [formGroup]="optionForm" #scrollCon>
+                <div *ngFor="let item of displayOptions;let i=index;"
+                    [ngClass]="{'highlighted':isMenuOpen && (i==highlightIdx)}">
+                    <mat-checkbox formControlName="{{item._id}}" (change)="onChange($event.checked, item, i)"
+                        defaultTabIndex="0" class="dropdown-checkbox" [ngClass]="{'single-select':maxSelect==1}">
+                        {{item.displayName||""}}</mat-checkbox>
+                </div>
+                <div class="no-options" *ngIf="!displayOptions.length && !searchString">
+                    No options
+                </div>
+                <div class="no-options" *ngIf="!displayOptions.length && !!searchString">
+                    No options meeting that search criteria
+                </div>
+            </section>
+            <div class="btn-con" *ngIf="!hideClearAll && !!displayOptions.length">
+                <!-- <div class="select-all blue-text-btn"
+                    [ngClass]="{'disabled':selectedOptions.length==displayOptions.length}" (click)="setAll(true)"
+                    *ngIf="!hideSelectAll">select all</div> -->
+                <div class="clear-all gray-text-btn" [ngClass]="{'disabled':!selectedOptions.length}"
+                    (click)="setAll(false)" *ngIf="!hideClearAll">clear all</div>
+                <button class="blue-btn done-btn" type="button" mat-button appearance="outline" *ngIf="maxSelect>1"
+                    [disabled]="!selectedOptions.length" (click)="hideOptions()">Done</button>
+            </div>
+        </div>
+
+    </ng-template>
+</mat-menu>

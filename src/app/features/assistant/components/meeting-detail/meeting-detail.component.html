@@ -1,0 +1,30 @@
+<div class="meeting-detail-con">
+    <div class="time-con">
+        <div class="field-con" *ngFor="let item of fields">
+            <div class="field-name-con">
+                <mat-icon class="field-icon" svgIcon="{{item.icon}}" aria-hidden="false" aria-label="svg icon">
+                </mat-icon>
+                <div class="field-name">{{item.displayName}}</div>
+            </div>
+            <div class="field-value-con">{{item.displayValue}}</div>
+        </div>
+    </div>
+    <div class="description-con" *ngIf="meetingData.description">
+        <div class="description-title-con">
+            <div class="assistant-title">Meeting details</div>
+            <div class="edit-con">
+                <mat-icon class="edit-icon" svgIcon="edit2" aria-hidden="false" aria-label="edit svg icon">
+                </mat-icon>
+                <div class="edit-title">Edit</div>
+            </div>
+        </div>
+        <div class="description-text">
+            {{meetingData.description}}
+        </div>
+    </div>
+    <div class="creator-con">
+        <div class="assistant-title">Creator</div>
+        <!-- <app-people-list-item [data]="creator"></app-people-list-item> -->
+        <app-assistant-people-item [data]="creator"></app-assistant-people-item>
+    </div>
+</div>

@@ -1,0 +1,62 @@
+.suggestion-con{
+    display: flex;
+    flex-direction: column;
+    padding-left:  15px;
+    padding-right:  15px;
+    padding-top: calc(2vh - 2px);    
+}
+.suggestion-con .btn-con{
+    border-bottom: 1px solid #3F3F42;
+    padding-bottom: calc(2vh - 2px);
+}
+.suggestion-con.last-item .btn-con{
+    border-bottom: none;
+}
+.title-con{
+    display: flex;
+    padding-bottom: 5px;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+.title{
+    color: white;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow:hidden;
+    font-size: 14px;
+    font-weight: 500;
+}
+.close-icon{
+    position: relative;
+    top: -4px;
+    width: 17px;
+    cursor: pointer;
+}
+
+.text{
+    color: #B2B2B2;
+    font-weight: 300;
+    font-size: 12px;
+    padding-bottom: 0.4vh;
+    line-height: 150%;
+}
+.personHl,.timeHl{
+    color: white;
+    font-weight: 500;
+}
+
+
+.suggestion-con .btn-con{
+    display: flex;
+    font-size: 13px;
+    cursor: pointer;
+}
+.suggestion-con .btn-con .btn.yellow{
+    color: var(--assistant-yellow);
+    padding: 5px 10px 5px 0;
+}
+.suggestion-con .btn-con .btn.white{
+    color: white;
+    padding: 5px 10px 5px 10px;
+}

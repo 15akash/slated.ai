@@ -1,0 +1,19 @@
+<div class="time-slot-con" [ngClass]="{
+    'light':theme=='light','dark':theme=='dark',
+    'email':type=='email',
+    'selected':isSelected,
+    'notEditable':notEditable
+}" (click)="onSelect($event)">
+    <div class="content-con">
+        <div class="time">{{timeDisplay}}</div>
+        <div class="date">{{dateDisplay}}</div>
+    </div>
+    <div class="selected-con" *ngIf="isSelected">
+        <mat-icon class="tick-icon" matPrefix svgIcon="tick" aria-hidden="false" aria-label="SVG icon">
+        </mat-icon>
+        <button *ngIf="type=='meetingLink'" class="assistant-white-btn" type="button" mat-button
+            (click)="onConfirm($event)">
+            Confirm
+        </button>
+    </div>
+</div>

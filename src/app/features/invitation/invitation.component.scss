@@ -1,0 +1,175 @@
+.page-con {
+    width: 100vw;
+    height: 100vh;
+    // background: linear-gradient(180deg, #EFF4FF 0%, #FCFDFF 66.03%, #FFFFFF 100%), #FFFFFF;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background: linear-gradient(180deg, #F4F8FF 0%, #FCFDFF 18.46%, #FFFFFF 27.95%), #FFFFFF;
+}
+.header-con{
+    width: 100%;
+    max-width: 1000px;
+    padding: 30px 15px;
+}
+
+.content-con{
+    display: flex;
+    flex: 1;
+    padding-bottom: 30px;
+    width: 100%;
+    max-width: 1000px;
+}
+.content-con .left{
+    width: 50%;
+    max-width: 450px;
+    display: flex;
+    flex-direction: column;
+}
+.content-con .right{
+    flex: 1;background-color: var(--assistant-bg);border-radius: 20px;
+    margin-left: 30px;
+    position: relative;
+}
+
+.title-con{
+    display: flex;
+    align-items: center;
+}
+.title{
+    color: var(--primary-text-black);
+    font-size: 30px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+}
+
+.details-con{
+    padding-top: 10px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+.meeting-icon{
+    color: var(--icon-gray);
+}
+.meeting-detail-item{
+    padding: 5px 0;
+}
+.meeting-detail-item .text{
+    margin-left: 8px;
+    font-weight: 300;
+    color: var(--primary-text-black);
+}
+.meeting-icon{
+    height: 15px;
+}
+
+.meeting-detail-con{
+    margin-bottom: 30px;
+}
+.meeting-detail-item{
+    display: flex;
+    align-items: center;
+}
+
+.sub-title{
+    color: var(--primary-text-black);
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 15px;
+}
+.sub-title span{
+    font-weight: 500;
+}
+
+.action-con{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 30px;
+    border-top: 1px solid var(--border-lightgray);
+}
+.action-con .action-btn{
+    margin: 0 0 15px 15px;
+    max-width: 250px;
+}
+
+.attendee-list-con{
+    max-height: 190px;
+    overflow-y: auto;
+}
+.attendee-list-item{
+    margin: 5px 0;
+}
+
+
+.content-con .right .wait-con{
+    width: 100%;
+    height: 100%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;    
+}
+.content-con .right .wait-con.loading{
+    display: flex;
+    position: absolute;    
+    top:0;left: 0;
+    z-index: 2;
+    background-color: #2e2e2ecc;
+}
+.content-con .right .wait-con .spinner{
+    color: var(--assistant-text-gray);
+}
+.content-con .right .wait-con .wait-txt{
+    margin-top: 15px;
+    font-weight: 300;    
+}
+.content-con .right .calendar-hold{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.timeslot-list-item-con{
+    margin-bottom: 10px;
+    width: 100%;
+}
+.calendar-hold .host-time-slot-list{
+    max-height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+::ng-deep .calendar-hold .time-slot-con{
+    margin: 3px 0;
+}
+
+.calendar-hold .title{
+    padding-bottom: 15px;
+    color: var(--assistant-text-gray);
+    font-size: 14px;
+    font-weight: 300;
+}
+.calendar-hold .btn-con{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.calendar-hold .calendar-msg{
+    margin-top: 15px;
+    color: var(--assistant-yellow);
+    line-height: 1.5;
+    text-align: center;
+}
+
+.calendar-hold .btn-con button{
+    width: 100%;
+    max-width: 400px;
+}

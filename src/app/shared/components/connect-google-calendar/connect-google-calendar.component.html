@@ -1,0 +1,15 @@
+<div class="google-calendar-con">
+    <button *ngIf="!status || status=='notLoggedIn' || status=='disconnected'" class="blue-btn"
+        style="margin-top: 15px;" type="button" mat-button (click)="onClickConnect()">
+        {{title}}
+    </button>
+    <button *ngIf="status=='revoked'" class="blue-btn" style="margin-top: 15px;" type="button" mat-button
+        (click)="onClickConnect()">
+        Reconnect Google Calendar
+    </button>
+    <button *ngIf="status=='connected'" class="blue-btn" style="margin-top: 15px;" type="button" mat-button
+        (click)="onClickConnect()">
+        Connected Google Calendar
+    </button>
+    <div class="status-txt">Status: {{status}}</div>
+</div>

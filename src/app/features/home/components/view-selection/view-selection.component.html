@@ -1,0 +1,27 @@
+<div class="view-selection-con" [ngClass]="{'open':isMenuOpen}" mat-button [matMenuTriggerFor]="viewSelectionMenu"
+    (menuOpened)="onOpenMenu()" (menuClosed)="onCloseMenu()" (mouseover)="isHovering=true"
+    (mouseout)="isHovering=false">
+    <mat-icon class="selected-item-icon"
+        svgIcon="{{selectedItem.highlightIcon && isHovering?selectedItem.highlightIcon:selectedItem.icon}}"
+        aria-hidden="false" aria-label="selected svg icon">
+    </mat-icon>
+    <span>{{selectedItem.displayName}}</span>
+    <mat-icon class="down-arrow-icon" [ngClass]="{'open':isMenuOpen}" svgIcon="down-arrow" aria-hidden="false"
+        aria-label="down-arrow svg icon">
+    </mat-icon>
+</div>
+<mat-menu class="view-selection-menu" #viewSelectionMenu="matMenu" xPosition="after" yPosition="below">
+    <div class="menu-con" (click)="onMenuClick($event)" panelClass="view-menu-con">
+        <section class="options-con" #scrollCon>
+            <div class="option-item" *ngFor="let item of displayOptions;let i=index;"
+                [ngClass]="{'highlighted':isMenuOpen && (item._id==highlightId)}" (click)="onSelect(item, i)"
+                (mouseover)="isHoveringId=item._id" (mouseout)="isHoveringId=''">
+                <mat-icon class="list-item-icon" [ngClass]="{'open':isMenuOpen}"
+                    svgIcon="{{item.highlightIcon && (isHoveringId==item._id || item._id==highlightId)?item.highlightIcon:item.icon}}"
+                    aria-hidden="false" aria-label="list svg icon">
+                </mat-icon>
+                <span>{{item.displayName}}</span>
+            </div>
+        </section>
+    </div>
+</mat-menu>

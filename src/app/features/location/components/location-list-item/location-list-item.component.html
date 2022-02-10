@@ -1,0 +1,44 @@
+<div class="location-list-item-con" (click)="onSelect()" [ngClass]="{
+    'selected':isSelected,
+    'highlight-blue':selectionColor=='blue' && isSelected,
+    'highlight-yellow':selectionColor=='yellow' && isSelected,
+    'highlight-orange':selectionColor=='orange' && isSelected,
+    'highlight-green':selectionColor=='green' && isSelected
+}">
+    <div class="highlight-bar"></div>
+    <div class="content-con">
+        <div class="title">{{data.displayName || data.name}}</div>
+        <div class="address-con" *ngIf="!!data.formatted_address || !!data.vicinity">
+            {{data.formatted_address||data.vicinity}}
+        </div>
+        <div class="detail-con">
+            <div class="travelTime-con" *ngIf="!!locationTypeDisplayText">
+                <img *ngIf="data.icon" class="google-place-icon" src="{{data.icon}}" alt="place-icon">
+                <span>{{locationTypeDisplayText}}</span>
+            </div>
+            <div class="travelTime-con" *ngIf="!!timezoneDisplayText">
+                <mat-icon class="travel-icon" svgIcon="timezone" aria-hidden="false" aria-label="SVG icon">
+                </mat-icon>
+                <span>{{timezoneDisplayText}}</span>
+            </div>
+            <div class="travelDistance-con" *ngIf="!!travelDistanceDisplayText">
+                <mat-icon class="travel-icon" svgIcon="route" aria-hidden="false" aria-label="Route SVG icon">
+                </mat-icon>
+                <span>{{travelDistanceDisplayText}}</span>
+            </div>
+            <div class="travelTime-con" *ngIf="!!travelTimeDisplayText">
+                <mat-icon class="time-icon" svgIcon="clock" aria-hidden="false" aria-label="Clock SVG icon">
+                </mat-icon>
+                <span>{{travelTimeDisplayText}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="icon-con" *ngIf="isSelected">
+        <mat-icon class="select-icon" svgIcon="tick" aria-hidden="false" aria-label="SVG icon">
+        </mat-icon>
+    </div>
+    <mat-icon class="remove-icon" svgIcon="close" aria-hidden="false" aria-label="SVG icon"
+        matTooltip="Remove from list" [matTooltipPosition]="'above'" (click)="removeItem()">
+    </mat-icon>
+
+</div>

@@ -1,0 +1,410 @@
+.page-con {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.account-con {
+  padding: 30px;
+  height: 100%;
+  width: 100%;
+  margin-right: 20px;
+}
+
+.contacts-toggle-con {
+  display: flex;
+  padding: 10px;
+  justify-content: space-between;
+  height: 30px;
+  align-items: center;
+  width: 300px;
+}
+
+.contacts-toggle-con h3 {
+  font-family: Lexend;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 26px;
+  color: #2e2e2e;
+}
+
+.divider {
+  border-right: 1px solid #f0f2f6;
+  height: 20px;
+}
+
+.black-box-divider {
+  opacity: 0.5;
+  border-bottom: 1px solid #3f3f42;
+  margin: 0 30px;
+}
+
+.people-con {
+  padding-top: 20px;
+  display: flex;
+}
+
+.people-list {
+  margin-right: 20px;
+  flex: 1;
+  overflow: scroll;
+  max-height: 80vh;
+}
+
+::ng-deep .people-list .avatar-con {
+  width: 30px;
+}
+
+::ng-deep .people-list .active-class .content .email {
+  color: blue;
+}
+
+::ng-deep .people-list .active-class .content .name {
+  color: blue !important;
+}
+
+::ng-deep .people-list .people-list-item-con {
+  margin-bottom: 7px;
+}
+
+::ng-deep .people-list .avatar-con.small {
+  width: 35px !important;
+  height: 35px !important;
+  font-size: 12px !important;
+}
+
+::ng-deep .people-list .email:active {
+  color: #2b6af5;
+}
+
+.people-info-con {
+  flex: 2;
+}
+
+// Assistant component
+
+.assistant-con {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  border-radius: 10px 12px 10px 10px;
+  background: var(--assistant-bg);
+  min-height: 80vh;
+}
+.header-con {
+  width: 100%;
+  display: flex;
+  padding: 30px;
+  box-sizing: border-box;
+  font-family: Lexend;
+  font-style: normal;
+}
+
+.avatar {
+  height: 60px;
+  width: 60px;
+}
+
+.title {
+  padding-left: 10px;
+}
+
+.person-name {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 26px;
+  color: #ffffff;
+  margin: 5px 0;
+}
+
+.person-designation {
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 18.2px;
+  color: #b2b2b2;
+}
+.header-con .title.center {
+  justify-content: center;
+}
+
+.content-con {
+  width: 100%;
+}
+
+.content-title {
+  display: flex;
+  font-family: Lexend;
+  font-style: normal;
+  margin: 15px 0;
+
+  position: relative;
+  width: 100%;
+}
+
+//////////////// Personal Info //////////////////////
+
+::ng-deep .content-title .mat-tab-header {
+  border-bottom: none;
+}
+
+::ng-deep .content-title .mat-tab-label-container {
+  padding-left: 30px;
+}
+
+::ng-deep .content-title .mat-tab-label {
+  background-color: transparent;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 18.2px;
+  color: #7e7c7c;
+  box-shadow: none;
+  font-family: Lexend;
+  padding: 0;
+  text-align: left;
+  justify-content: flex-start;
+  margin-right: 40px;
+  min-width: 30px;
+}
+
+::ng-deep .content-title .mat-tab-group.mat-primary .mat-ink-bar {
+  background-color: #ffffff;
+}
+
+::ng-deep .content-title .mat-tab-label-active {
+  font-family: Lexend;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  color: white;
+  opacity: 1;
+}
+
+::ng-deep .mat-tab-group {
+  width: 100%;
+}
+
+.personal-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 20px 0 20px 30px;
+  width: 75%;
+  position: relative;
+}
+
+.particular-detail {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  font-family: Lexend;
+  font-style: normal;
+  color: white;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 18.2px;
+  margin: 15px 0;
+}
+
+.icon-con {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 30px;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.icons {
+  display: flex;
+  margin: auto;
+  width: 20px;
+  height: 20px;
+  color: white;
+}
+
+.social-media-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 20px 0 20px 30px;
+  width: 75%;
+}
+
+.social-account a {
+  display: flex;
+  align-items: center;
+  font-family: Lexend;
+  font-style: normal;
+  text-decoration: none;
+  color: white;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 18.2px;
+  margin: 15px 0;
+}
+
+///////////////// Person Info tab ends /////////////////
+
+//////////// Meetings tab /////////////////////
+
+::ng-deep .content-title .mat-expansion-panel-header {
+  padding: 0 30px;
+}
+
+::ng-deep .content-title .mat-tab-body-wrapper {
+  margin-top: 15px;
+}
+
+::ng-deep .content-title .mat-expansion-panel {
+  background-color: transparent;
+  margin: 10px 0;
+  box-shadow: none;
+}
+
+::ng-deep .content-title .mat-expansion-panel-header-title {
+  font-size: 16px;
+  color: white;
+  font-weight: 400;
+  font-style: normal;
+  font-family: "Lexend";
+  line-height: 20.8px;
+  padding: 0;
+}
+
+::ng-deep .content-title .mat-expansion-indicator::after {
+  padding: 5px;
+  margin: 5px;
+  color: white;
+}
+
+.meeting-con {
+  display: flex;
+  align-items: center;
+  font-family: Lexend;
+  font-style: normal;
+  margin-bottom: 15px;
+}
+
+.meeting-name {
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 18.2px;
+  color: #ffffff;
+  margin-bottom: 5px;
+}
+
+.meeting-date {
+  font-weight: 300;
+  font-size: 11px;
+  line-height: 14.3px;
+  color: #b2b2b2;
+}
+
+/////////////////////////// Meetings tab end //////////////////////////
+
+.more-con,
+.list-close-con {
+  width: 40px;
+  height: 40px;
+  background: var(--assistant-yellow);
+  border-radius: 0 10px 0 10px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.more-con:hover .more-icon {
+  color: var(--primary-blue);
+}
+.list-close-con:hover .close-icon {
+  color: black;
+}
+.more-icon {
+  color: var(--assistant-bg);
+  width: 15px;
+}
+.close-icon {
+  width: 15px;
+  display: none;
+}
+.more-list-con {
+  position: absolute;
+  width: calc(30% - 20px);
+  top: 0px;
+  right: 0px;
+  background: var(--assistant-yellow);
+  padding: 15px;
+  box-sizing: border-box;
+  transition: all 0.15s ease-out;
+  transform: scale(0);
+  transform-origin: top right;
+  border-radius: 0px 100px 0px 100px;
+  opacity: 0;
+}
+
+.more-list-con.open {
+  top: 0;
+  right: 0;
+  transform: scale(1);
+  border-radius: 0 10px 0 10px;
+  opacity: 1;
+}
+.more-list-con.open .close-icon {
+  display: block;
+}
+.more-list-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+}
+.list-item-text {
+  color: var(--assistant-text-black);
+  padding-left: 10px;
+  font-size: 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  font-weight: 300;
+}
+.list-icon {
+  color: var(--assistant-bg);
+  width: 16px;
+  min-width: 16px;
+}
+.more-list-item:hover .list-item-text,
+.more-list-item:hover .list-icon {
+  color: var(--primary-blue);
+}
+
+#chalkmark_bg_1 {
+  width: 3.8%;
+  left: 0%;
+  position: absolute;
+  bottom: 4%;
+}
+#chalkmark_bg_2 {
+  width: 11%;
+  transform: rotate(120deg);
+  right: -3%;
+  top: 10px;
+  position: absolute;
+  bottom: 25%;
+}
+
+#chalkmark_bg_meeting_tab {
+  width: 11%;
+  transform: rotate(120deg);
+  right: -3.55%;
+  top: 180px;
+  position: absolute;
+}
+
+.meetings-tab {
+  min-height: 40vh;
+}

@@ -1,0 +1,44 @@
+.con{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    height: 100px;
+    overflow:hidden;
+    border-radius: 10px;
+}
+.con .left{
+    width: 100px;
+    height: 100px;
+    overflow:hidden;
+    background-color: var(--icon-gray);
+}
+.con .left img{
+    height: 100%;
+}
+.con .right{
+    flex: 1;
+    height: 100%;
+    overflow-y: auto;
+    padding: 15px 15px 20px 15px;
+    box-sizing: border-box;
+}
+.con .right .row1{
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+.con .right .row2{
+    font-weight: 300;
+    font-size: 90%;
+    margin-bottom: 5px;
+    display: flex;
+    color: var(--secondary-text-gray);
+}
+.con .right .row2 .row-icon{
+    color: var(--primary-blue);
+    padding-right: 10px;
+    min-width: 15px;
+    min-height: 15px;
+    width: 15px;
+    height: 15px;
+}

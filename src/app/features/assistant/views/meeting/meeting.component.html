@@ -1,0 +1,30 @@
+<div class="view-con">
+    <div class="top-icon-con">
+        <div class="tab-icon" *ngFor="let item of tabIcons;let i=index;" (click)="onTabIconClick(item)">
+            <mat-icon class="meeting-tab-icon" svgIcon="{{item.icon}}" aria-hidden="false" aria-label="svg icon"
+                matTooltip="{{item.displayName}}" [matTooltipPosition]="'below'">
+            </mat-icon>
+        </div>
+    </div>
+    <div class="tab-con">
+        <div class="tab-header-con">
+            <div class="tab-header" *ngFor="let item of tabItems;let i=index;"
+                [ngClass]="{'highlighted':item._id==selectedTabId}" (click)="onTabClick(item, i)">
+                <div class="tab-header-title">{{item.displayName}}</div>
+                <div class="tab-highlighter"></div>
+            </div>
+        </div>
+        <div class="tab-content-con" #tabContentCon>
+            <div class="tab-content" *ngFor="let item of tabItems">
+                <app-meeting-detail *ngIf="item._id=='details'" [data]="meetingData"></app-meeting-detail>
+                <div class="people-list-con" *ngIf="item._id=='people'">
+                    <app-people-list-item *ngFor="let item of meetingData.attendees" [data]="item">
+                    </app-people-list-item>
+                </div>
+                <div class="previous-meeting-con" *ngIf="item._id=='previous'">
+                    <app-previous-meeting *ngFor="let item of previousMeetings" [data]="item"></app-previous-meeting>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+.color-input-con{
+    display: flex;    
+}
+.color-input-con .color-box{
+    width: 30px;
+    height: 30px;
+    margin: 0 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.color-input-con .color-box:hover{
+    filter: saturate(1.5);
+}
+.color-input-con .color-box .tick-icon{
+    width: 15px;
+}
+

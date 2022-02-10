@@ -1,0 +1,13 @@
+@import url(../../icons.scss);
+
+.icon-con .icon{
+    width: 24px;
+}
+
+.icon-con.color .icon{
+    color: var(--primary-text-black);
+}
+.icon-con.highlighted .icon{
+    color: var(--primary-blue);
+}
+

@@ -1,0 +1,15 @@
+<div class="header-con">
+    <img id="logo" src="../../../../../assets/logos/slated-full-logo2.png" alt="slated-full-logo">
+    <div style="flex: 1;"></div>
+    <div *ngIf="!isLoggedIn" class="login-con" (click)="startLogin()">
+        <mat-icon class="login-icon" svgIcon="account" aria-hidden="false" aria-label="SVG icon">
+        </mat-icon>
+        <span>Login</span>
+    </div>
+    <button *ngIf="isLoggedIn" class="blue-btn narrow header-btn" type="button" mat-button (click)="goHome()">
+        Go to my slate
+    </button>
+    <button *ngIf="!isLoggedIn" class="blue-btn narrow header-btn" type="button" mat-button (click)="startSignup()">
+        Sign up
+    </button>
+</div>

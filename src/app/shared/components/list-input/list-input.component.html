@@ -1,0 +1,32 @@
+<div class="list-selection-con" [ngClass]="{'open':isMenuOpen,'inline':displayType=='inline'}" mat-button
+    [matMenuTriggerFor]="listSelectionMenu" (menuOpened)="onOpenMenu()" (menuClosed)="onCloseMenu()"
+    (mouseover)="isHovering=true" (mouseout)="isHovering=false" #inputCon>
+    <mat-icon class="selected-item-icon" *ngIf="!!selectedItem && !!selectedItem.icon"
+        svgIcon="{{selectedItem.highlightIcon && isHovering?selectedItem.highlightIcon:selectedItem.icon}}"
+        aria-hidden="false" aria-label="selected svg icon">
+    </mat-icon>
+    <mat-icon class="default-icon" *ngIf="(!selectedItem || !selectedItem.icon) && defaultIcon"
+        svgIcon="{{defaultIcon}}" aria-hidden="false" aria-label="selected svg icon">
+    </mat-icon>
+    <span [ngClass]="{'inline':displayType=='inline'}" *ngIf="!!selectedItem">{{selectedItem.displayName}}</span>
+    <span *ngIf="!selectedItem && placeholder">{{placeholder}}</span>
+    <mat-icon class="down-arrow-icon" [ngClass]="{'open':isMenuOpen,'inline':displayType=='inline'}"
+        svgIcon="down-arrow" aria-hidden="false" aria-label="down-arrow svg icon">
+    </mat-icon>
+</div>
+<mat-menu class="list-selection-menu" #listSelectionMenu="matMenu" xPosition="after" yPosition="below">
+    <div class="menu-con" (click)="onMenuClick($event)" panelClass="list-menu-con"
+        [ngStyle]="{'min-width.px': (inputWidth-2),'max-width.px': (inputWidth-2)}">
+        <section class="options-con" #scrollCon>
+            <div class="option-item" *ngFor="let item of displayOptions;let i=index;"
+                [ngClass]="{'highlighted':isMenuOpen && (item._id==highlightId)}" (click)="onSelect(item, i)"
+                (mouseover)="isHoveringId=item._id" (mouseout)="isHoveringId=''">
+                <mat-icon *ngIf="!!item.icon" class="list-item-icon" [ngClass]="{'open':isMenuOpen}"
+                    svgIcon="{{item.highlightIcon && (isHoveringId==item._id || item._id==highlightId)?item.highlightIcon:item.icon}}"
+                    aria-hidden="false" aria-label="list svg icon">
+                </mat-icon>
+                <span>{{item.displayName}}</span>
+            </div>
+        </section>
+    </div>
+</mat-menu>

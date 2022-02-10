@@ -1,0 +1,105 @@
+.list-selection-con{
+    cursor: pointer;
+    color: var(--secondary-text-gray);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 37px;
+    border:  1px solid var(--border-lightgray);
+    border-radius: 5px;
+    width: 100%;
+    font-weight: 300;
+    box-sizing: border-box;
+}
+.list-selection-con.inline{
+    padding: 0 5px;
+}
+.list-selection-con:hover{
+    color: var(--primary-blue);
+}
+.list-selection-con.open{
+    border-radius: 5px 5px 0 0;
+    border-bottom: none;    
+}
+.list-selection-con span{
+    flex: 1;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.list-selection-con .inline{
+    color: var(--primary-blue);
+    font-weight: 400;
+    padding-left: 5px;
+    padding-right: 5px;    
+}
+
+.down-arrow-icon{
+    width: 15px;
+    padding-left: 10px;
+    padding-right: 15px;
+    transition: transform 0.25s;
+    transform: rotate(0deg);
+}
+.down-arrow-icon.open{
+    transform: rotate(180deg);
+}
+.down-arrow-icon.inline{
+    padding: 0 1px;
+}
+
+.menu-con{
+    padding: 0px 15px 10px 15px;
+    // width: 190px;
+    //width: calc(100% - 1px);
+    // width: 210px;
+    box-sizing: border-box;
+    max-height: 225px;
+}
+.options-con{
+    border-top: 1px solid var(--border-lightgray);
+}
+.option-item{
+    padding: 7px 0px;
+    cursor: pointer;
+    align-items: center;
+    display: flex;
+    font-weight: 300;
+}
+.option-item.highlighted, .option-item:hover{
+    color: var(--primary-blue);
+}
+
+.list-item-icon{
+    width: 15px;
+    min-width: 15px;
+    padding: 0 10px 0 0px;
+}
+.selected-item-icon{
+    width: 15px;
+    padding: 0 10px 0 15px;
+    color: var(--primary-blue);
+}
+.default-icon{
+    width: 15px;
+    padding: 0 10px 0 15px;
+    color: var(--primary-blue);    
+}
+
+
+
+::ng-deep .list-selection-menu{
+    margin-top: 0 !important;
+    box-shadow: 0px 20px 30px rgba(34, 41, 55, 0.05) !important;
+    // border-radius: 5px !important;
+    border: 1px solid #f0F2F6;
+    border-top: none;
+    border-radius: 0 0 5px 5px !important;    
+}
+::ng-deep .list-selection-menu .mat-menu-content{
+    padding-top: 0 !important;
+}
+::ng-deep .list-selection-menu.mat-menu-panel{
+    max-width: none;
+    min-width: unset;
+}

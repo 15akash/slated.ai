@@ -1,0 +1,13 @@
+<div class="avatar-con" *ngIf="!!data" [ngClass]="{
+    'avatar-external':initialType=='external', 
+    'avatar-optional':data.optional,
+    'small':size=='small',
+    'large':size=='large',
+    'photo':!!data.photoUrl
+}">
+    <img *ngIf="!!data.photoUrl" src={{data.photoUrl}} alt="profile image">
+    <div *ngIf="!data.photoUrl" class="avatar-text">{{initials}}</div>
+</div>
+<div class="avatar-con avatar-extra" *ngIf="!!displayText">
+    <div class="avatar-text">{{displayText}}</div>
+</div>

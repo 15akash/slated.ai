@@ -1,0 +1,157 @@
+.meeting-list-con{
+    width: 100%;
+    border: 1px solid var(--border-lightgray);
+    border-left: 10px solid var(--border-lightgray);
+    border-radius: 10px;
+    height: 100px;
+    margin-bottom: 10px;    
+    display: flex;
+    overflow: hidden;
+    justify-content: flex-start;
+    background: white;
+    cursor: pointer;
+    overflow-x: auto;
+}
+.meeting-list-con:hover{
+    border: 1px solid var(--primary-blue);
+    border-left: 10px solid var(--primary-blue);
+}
+// .highlight-bar{
+//     min-width: 10px;
+//     background: var(--border-lightgray);
+// }
+// .meeting-list-con:hover .highlight-bar, .highlight-bar.highlighted{
+//     background: var(--primary-blue);
+// }
+
+
+.time-con{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+.time-con .from-time,.time-con .to-time{
+    color: var(--primary-text-black);
+    font-size: 16px;
+    line-height: 140%;
+    font-weight: 400;
+    white-space: nowrap;
+}
+.duration-time{
+    color: var(--secondary-text-gray);
+    font-size: 12px;   
+    font-weight: 300;
+    margin-top: 5px;
+    white-space: nowrap;
+}
+
+.meeting-con{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 0 25px;
+}
+.meeting-con .title{
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--primary-text-black);
+}
+.calendar-title{
+    font-size: 14px;
+    font-weight: 300;
+    margin-top: 5px;
+    color: var(--secondary-text-gray);
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.people-con{
+    display: flex;
+    padding: 0 25px;
+    align-items: center;    
+}
+.people-con .avatar{
+    margin-left: -20px;
+}
+
+.note-con{
+    display: flex;
+    padding: 0 25px;
+    align-items: center;
+}
+.channel-con{
+    display: flex;
+    padding: 0 25px;
+    align-items: center;
+}
+.note-con .icon, .channel-con .icon{
+    margin: 0 5px;
+}
+
+
+.more-con{
+    display: flex;
+    padding: 0 10px 0 25px;
+    align-items: center;
+}
+.more-con .more-icon{
+    cursor: pointer;
+    color: var(--icon-gray);
+}
+.more-con .more-icon:hover{
+    color: var(--primary-text-black);
+}
+
+::ng-deep .meeting-menu{
+    margin-top: 0 !important;
+    box-shadow: 0px 20px 30px rgba(34, 41, 55, 0.05) !important;
+    border-radius: 5px !important;
+    max-width: none !important;
+}
+::ng-deep .meeting-menu .mat-menu-panel{
+    max-width: none !important;
+}
+.menu-con{
+    padding: 0 15px 5px 15px;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+.option-item{
+    padding: 7px 0px;
+    cursor: pointer;
+    align-items: center;
+    display: flex;
+    color: var(--primary-text-black);
+    font-weight: 300;
+}
+.option-item:hover{
+    color: var(--primary-blue);
+}
+.list-item-icon{
+    width: 15px;
+    padding: 0 10px 0 0px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

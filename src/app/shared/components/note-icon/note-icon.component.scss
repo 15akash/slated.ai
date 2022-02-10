@@ -1,0 +1,21 @@
+@import url(../../icons.scss);
+
+.icon-con.color{
+    background-color: var(--icon-bg-lightyellow);
+}
+.icon-con.color .icon{
+    color: var(--icon-yellow);
+}
+
+.icon-con.highlighted{
+    //background-color: var(--icon-bg-lightyellow);
+    filter: saturate(2);
+}
+// .icon-con.highlighted .icon{
+//     color: var(--icon-yellow);
+// }
+
+
+
+
+

@@ -1,0 +1,9 @@
+<div class="status-con" [ngClass]="{
+        'no-border':displayType=='no-border',
+        'yellow':status=='pending',
+        'blue':status=='rescheduling',
+        'green':status=='confirmed',
+        'orange':status=='cancelled'
+    }">
+    {{status}}
+</div>

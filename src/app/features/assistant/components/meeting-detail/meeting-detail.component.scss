@@ -1,0 +1,70 @@
+@import '../../assistant.scss';
+
+
+.meeting-detail-con{
+    width: 100%;
+}
+.description-title-con{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 10px;
+}
+
+.time-con{
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--assistant-border-gray);
+}
+.description-con{
+    padding-top: 15px;    
+    padding-bottom: 20px;
+}
+.description-text{
+    font-size: 12px;
+    line-height: 160%;
+    font-weight: 300;
+}
+
+
+.field-con{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 7.5px 0;
+}
+.field-name-con{
+    display: flex;
+    align-items: center;
+}
+.field-icon{
+    width: 15px;
+    color: #CECECE;
+}
+.field-name{
+    font-weight: 300;
+    color: var(--assistant-text-gray);
+    margin-left: 7.5px;
+    font-size: 12px;
+}
+.field-value-con{
+    font-size: 12px;
+    color: var(--assistant-text-white);
+}
+
+
+.edit-con{
+    display: flex;
+    align-items: center;
+    padding-bottom: 15px;
+}
+.edit-icon{
+    width: 15px;
+}
+.edit-title{
+    font-weight: 300;
+    font-size: 12px;
+    padding-left: 5px;
+}
+
+

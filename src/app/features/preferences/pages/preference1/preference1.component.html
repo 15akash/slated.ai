@@ -1,0 +1,35 @@
+<div class="page-con">
+    <div class="preference-con">
+        <img id="logo" src="../../../../../assets/logos/slated-full-logo2.png" alt="slated-full-logo">
+        <div class="sub-title">Welcome to Slated. Let's get you started.</div>
+        <div class="title">When do you prefer your meetings?</div>
+        <div class="inline-dropdown-con">
+            <app-inline-dropdown title="I prefer my meetings on" placeholder="select days of the week"
+                [options]="dayOptions" displayFn="day" (change)="onSetDay($event)" (close)="onCloseDay($event)"
+                (open)="onOpenDay($event)" [selectedOptions]="selectedDayOptions" [showSearch]="true" [tabindex]="1"
+                [isMenuOpenOnInit]="false" [deferredMenuOpen]="isReady">
+            </app-inline-dropdown>
+            <app-inline-dropdown
+                *ngIf="(!!gf.preferredDays.value.length && !isDayOpen)||!!gf.preferredHours.value.length" title="at"
+                placeholder="select time of the day" [options]="hourOptions" displayFn="time"
+                (change)="onSetTime($event)" [selectedOptions]="selectedTimeOptions" [showSearch]="true" [tabindex]="2">
+            </app-inline-dropdown>
+        </div>
+        <button class="blue-btn" mat-button (click)="next()" [disabled]="!preferenceForm.valid"
+            tabindex="3">Continue</button>
+        <div class="blue-text-btn skip-btn" (click)="skip()">Skip</div>
+        <div class="blue-text-btn" (click)="remindLater()">Remind me later</div>
+    </div>
+    <div style="flex: 1;"></div>
+    <div class="page-number">
+        <mat-icon class="left-arrow-icon disabled" svgIcon="down-arrow" (click)="previous()">
+        </mat-icon>
+        <div class="txt"><span>1</span>/5</div>
+        <mat-icon class="right-arrow-icon" svgIcon="down-arrow" (click)="skip()">
+        </mat-icon>
+    </div>
+    <img id="chalkmark_bg_1" class="chalkmark_bg" src="../../../../../assets/chalk-marks/spark-lightblue.png"
+        alt="spark-green">
+    <img id="chalkmark_bg_2" class="chalkmark_bg" src="../../../../../assets/chalk-marks/wiggle-lightgreen.png"
+        alt="arrow-lightblue">
+</div>

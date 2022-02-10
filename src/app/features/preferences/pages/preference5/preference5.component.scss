@@ -1,0 +1,71 @@
+@import '../../preferences.scss';
+
+.preference-con{
+    height: 100%;
+}
+.inline-dropdown-con{
+    padding: 30px 0 0 0;
+    display: flex;
+    flex-direction: column;
+}
+.inline-dd-list{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    max-width: 500px;
+    line-height: 1.5;
+}
+.inline-dd-list-item{
+    display: flex;
+    align-items: baseline;
+}
+.activity-title{
+    font-weight: 300;
+    font-size: 18px;
+    color: var(--primary-text-gray);
+}
+
+.activity-icon{
+    max-width: 15px;
+    max-height: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-right: 10px;
+    color: var(--primary-blue);        
+}
+.activity-delete-icon{    
+    width: 20px;
+    height: 20px;
+    position: relative;
+    bottom: 3px;
+    left: 10px;        
+    cursor: pointer;
+}
+.add-more-btn{
+    padding: 15px 0 30px 0;
+}
+
+
+
+#chalkmark_bg_1{
+    width: 2.5vw;
+    top: 15%;
+    right: 15%;
+    transform: rotate(60deg);
+}
+#chalkmark_bg_2{
+    width: 6vw;
+    right: 19%;
+    bottom: 31%;
+}
+#chalkmark_bg_3{
+    width: 6vw;
+    left: 20%;
+    top: 21%;
+    transform: scaleX(-1);
+}
+
+.page-number{
+    position: initial;
+    padding: 50px 0;
+}

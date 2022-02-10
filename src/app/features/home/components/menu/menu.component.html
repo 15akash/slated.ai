@@ -1,0 +1,97 @@
+<div
+  class="menu-con"
+  [ngClass]="{
+    expanded: isExpanded,
+    collapsed: !isExpanded,
+    afterExpanded: afterExpanded,
+    afterCollapsed: afterCollapsed
+  }"
+>
+  <div class="menu-con2">
+    <img
+      class="logo"
+      src="../../../../../assets/logos/slated-half-logo.png"
+      alt="slated-half-logo"
+    />
+    <div class="menu-list menu-list-1">
+      <div
+        class="menu-item"
+        *ngFor="let item of list1"
+        [ngClass]="{ selected: selectedPage == item._id }"
+        (click)="onMenuItemClick(item)"
+        matTooltip="{{ item.displayName }}"
+        [matTooltipPosition]="'after'"
+        [matTooltipDisabled]="isExpanded"
+      >
+        <mat-icon
+          class="menu-icon"
+          svgIcon="{{ item._id }}"
+          aria-hidden="false"
+          aria-label="item._id+ 'svg icon'"
+        >
+        </mat-icon>
+        <div class="menu-text">{{ item.displayName }}</div>
+        <div class="highlight-bar"></div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="menu-list menu-list-2">
+      <div
+        class="menu-item"
+        *ngFor="let item of list2"
+        [ngClass]="{ selected: selectedPage == item._id }"
+        (click)="onMenuItemClick(item)"
+        matTooltip="{{ item.displayName }}"
+        [matTooltipPosition]="'after'"
+        [matTooltipDisabled]="isExpanded"
+      >
+        <mat-icon
+          class="menu-icon"
+          svgIcon="{{ item._id }}"
+          aria-hidden="false"
+          aria-label="apps svg icon"
+        >
+        </mat-icon>
+        <div class="menu-text">{{ item.displayName }}</div>
+        <div class="highlight-bar"></div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="menu-list menu-list-3">
+      <div
+        class="menu-item"
+        *ngFor="let item of list3"
+        [ngClass]="{ selected: selectedPage == item._id }"
+        (click)="onMenuItemClick(item)"
+        matTooltip="{{ item.displayName }}"
+        [matTooltipPosition]="'after'"
+        [matTooltipDisabled]="isExpanded"
+      >
+        <mat-icon
+          class="menu-icon"
+          svgIcon="{{ item._id }}"
+          aria-hidden="false"
+          aria-label="apps svg icon"
+        >
+        </mat-icon>
+        <div class="menu-text">{{ item.displayName }}</div>
+        <div class="highlight-bar"></div>
+      </div>
+    </div>
+    <div style="flex: 1"></div>
+    <div
+      class="arrow-con"
+      (click)="toggleExpansion()"
+      matTooltip="{{ isExpanded ? 'Collapse menu' : 'Expand menu' }}"
+      [matTooltipPosition]="'after'"
+    >
+      <mat-icon
+        class="arrow-icon"
+        svgIcon="arrow"
+        aria-hidden="false"
+        aria-label="arrow svg icon"
+      >
+      </mat-icon>
+    </div>
+  </div>
+</div>

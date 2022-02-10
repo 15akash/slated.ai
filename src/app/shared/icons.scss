@@ -1,0 +1,14 @@
+.icon-con{
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: var(--bg-lightgray);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.icon-con .icon{
+    width: 20px;
+    color: var(--icon-gray);
+}

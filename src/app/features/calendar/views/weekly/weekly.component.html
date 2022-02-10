@@ -1,0 +1,52 @@
+<div class="calendar-parent">
+  <div class="weekly-calendar">
+    <div class="days-container">
+      <div></div>
+      <div class="each-calendar-day" *ngFor="let item of weekdays">
+        {{ item.shortName }}, {{ item.date.getDate() }}
+      </div>
+    </div>
+    <div class="scroll-container" #scrollCon>
+      <div class="time-container">
+        <div *ngFor="let time of timeContainer">
+          {{ time }}
+        </div>
+      </div>
+
+      <div class="events-container">
+        <!-- <app-meeting-overlay-weekly
+          [meetings]="meetings"
+        ></app-meeting-overlay-weekly> -->
+        <div *ngFor="let item of weekdays">
+          <div class="time-div" *ngFor="let meeting of meetings">
+            <div
+              class="meeting-container"
+              *ngIf="meeting.displayStartDate == item.date.getDate()"
+              [ngClass]="{
+                'meeting-container--active':
+                  item.date.getDate() === currentDate.getDate()
+              }"
+              [ngStyle]="{
+                'height.px': meeting.endDateTime,
+                'top.px': meeting.startDateTime
+              }"
+            >
+              <div class="meeting-content">
+                <div class="meeting-time">
+                  {{ meeting.startDateTime }} - {{ meeting.endDateTime }}
+                </div>
+                <div class="meeting-name">
+                  {{ meeting.name }}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="each-calendar-dayTime"
+            *ngFor="let time of timeContainer"
+          ></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

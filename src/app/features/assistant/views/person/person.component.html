@@ -1,0 +1,95 @@
+<div class="view-con">
+    <div class="title-con">
+        <app-avatar [data]="personData" size="large"></app-avatar>
+        <div class="name-con">
+            <div class="name-title">{{personData.name}}</div>
+            <div class="name-subtitle">{{personData.title}}</div>
+        </div>
+    </div>
+    <div class="profile-con">
+        <div class="profile-list-item">
+            <div class="icon-con">
+                <mat-icon class="profile-icon timezone-icon" svgIcon="timezone" aria-hidden="false"
+                    aria-label="timezone svg icon">
+                </mat-icon>
+            </div>
+            <div class="profile-item">
+                {{personData.timezoneDisplayText}}
+            </div>
+        </div>
+        <div class="profile-list-item">
+            <div class="icon-con">
+                <mat-icon class="profile-icon email2-icon" svgIcon="email2" aria-hidden="false"
+                    aria-label="email2 svg icon">
+                </mat-icon>
+            </div>
+            <div class="profile-item">
+                {{personData.email}}
+            </div>
+        </div>
+        <div class="profile-list-item clickable" *ngIf="!!personData.linkedInLink"
+            (click)="onLinkClick(personData.linkedInLink)">
+            <div class="icon-con">
+                <mat-icon class="profile-icon linkedin-icon" svgIcon="linkedin" aria-hidden="false"
+                    aria-label="linkedin svg icon">
+                </mat-icon>
+            </div>
+            <div class="profile-item">LinkedIn</div>
+            <div style="flex: 1;"></div>
+            <mat-icon class="link-icon" svgIcon="link" aria-hidden="false" aria-label="link svg icon">
+            </mat-icon>
+        </div>
+        <div class="profile-list-item clickable" *ngIf="!!personData.twitterLink"
+            (click)="onLinkClick(personData.twitterLink)">
+            <div class="icon-con">
+                <mat-icon class="profile-icon twitter-icon" svgIcon="twitter" aria-hidden="false"
+                    aria-label="twitter svg icon">
+                </mat-icon>
+            </div>
+            <div class="profile-item">Twitter</div>
+            <div style="flex: 1;"></div>
+            <mat-icon class="link-icon" svgIcon="link" aria-hidden="false" aria-label="link svg icon">
+            </mat-icon>
+        </div>
+        <div class="profile-list-item clickable" *ngIf="!!personData.githubLink"
+            (click)="onLinkClick(personData.githubLink)">
+            <div class="icon-con">
+                <mat-icon class="profile-icon github-icon" svgIcon="github" aria-hidden="false"
+                    aria-label="github svg icon">
+                </mat-icon>
+            </div>
+            <div class="profile-item">GitHub</div>
+            <div style="flex: 1;"></div>
+            <mat-icon class="link-icon" svgIcon="link" aria-hidden="false" aria-label="link svg icon">
+            </mat-icon>
+        </div>
+        <div class="profile-list-item clickable" *ngIf="!!personData.instagramLink"
+            (click)="onLinkClick(personData.instagramLink)">
+            <div class="icon-con">
+                <mat-icon class="profile-icon instagram-icon" svgIcon="instagram" aria-hidden="false"
+                    aria-label="instagram svg icon">
+                </mat-icon>
+            </div>
+            <div class="profile-item">Instagram</div>
+            <div style="flex: 1;"></div>
+            <mat-icon class="link-icon" svgIcon="link" aria-hidden="false" aria-label="link svg icon">
+            </mat-icon>
+        </div>
+        <div class="profile-list-item clickable" *ngIf="!!personData.facebookLink"
+            (click)="onLinkClick(personData.facebookLink)">
+            <div class="icon-con">
+                <mat-icon class="profile-icon facebook-icon" svgIcon="facebook" aria-hidden="false"
+                    aria-label="timezone svg icon">
+                </mat-icon>
+            </div>
+            <div class="profile-item">Facebook</div>
+            <div style="flex: 1;"></div>
+            <mat-icon class="link-icon" svgIcon="link" aria-hidden="false" aria-label="link svg icon">
+            </mat-icon>
+        </div>
+    </div>
+    <div class="previous-meeting-con">
+        <div class="assistant-title" *ngIf="previousMeetings.length">Previous meetings</div>
+        <app-previous-meeting *ngFor="let item of previousMeetings" [data]="item"></app-previous-meeting>
+    </div>
+</div>

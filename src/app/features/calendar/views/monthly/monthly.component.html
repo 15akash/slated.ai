@@ -1,0 +1,31 @@
+<div class="calendar-parent">
+  <div class="monthly-calendar">
+    <div class="days-container">
+      <div class="each-calendar-day" *ngFor="let item of weekdays">
+        {{ item.displayName }}
+      </div>
+    </div>
+    <div class="dates-container">
+      <div class="each-calendar-date" *ngFor="let eachDate of calendarDates">
+        <div class="date-selection" *ngIf="eachDate > previousMonthDays">
+          <span>{{ eachDate - previousMonthDays }}</span>
+        </div>
+        <ul>
+          <li
+            *ngFor="
+              let meeting of findEvents(eachDate - previousMonthDays).events
+            "
+          >
+            {{ meeting }}
+          </li>
+          <a *ngIf="findEvents(eachDate - previousMonthDays).length > 2"
+            >See all
+            <span>{{
+              findEvents(eachDate - previousMonthDays).length
+            }}</span></a
+          >
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+<form class="search-form" [formGroup]="searchForm" autocomplete="off" [ngClass]="{'hovering':isHovering}"
+    (mouseover)="isHovering=true" (mouseout)="isHovering=false" #inputCon>
+    <mat-form-field class="title-field" appearance="fill">
+        <input type="text" placeholder="{{placeholder}}" aria-label="search" matInput formControlName="searchString"
+            #searchInputElement (focus)="onFocus()" (blur)="onBlur()" tabindex="{{tabindex*1}}" autocomplete="off"
+            spellcheck="true" autofocus (menuOpened)="onOpenMenu()" (menuClosed)="onCloseMenu()"
+            [matMenuTriggerFor]="selectionMenu">
+        <mat-icon *ngIf="gf.searchString.value" class="close-icon" matSuffix svgIcon="close" aria-hidden="false"
+            aria-label="close svg icon" (click)="clearSearch()">
+        </mat-icon>
+    </mat-form-field>
+</form>
+<mat-menu class="type-selection-menu" #selectionMenu="matMenu" xPosition="after" yPosition="below">
+    <div class="menu-con" (click)="onMenuClick($event)" panelClass="type-menu-con"
+        [ngStyle]="{'min-width.px': (inputWidth-2),'max-width.px': (inputWidth-2)}">
+        <section class="options-con" #scrollCon>
+            <div class="option-item" *ngFor="let item of displayOptions;let i=index;"
+                [ngClass]="{'highlighted':isMenuOpen && (item._id==highlightId)}" (click)="onSelect(item, i)"
+                (mouseover)="isHoveringId=item._id" (mouseout)="isHoveringId=''">
+                <mat-icon *ngIf="!!item.icon" class="type-item-icon" [ngClass]="{'open':isMenuOpen}"
+                    svgIcon="{{item.highlightIcon && (isHoveringId==item._id || item._id==highlightId)?item.highlightIcon:item.icon}}"
+                    aria-hidden="false" aria-label="list svg icon">
+                </mat-icon>
+                <span>{{item.displayName}}</span>
+            </div>
+            <div class="no-options" *ngIf="!displayOptions.length && !gf.searchString.value && !showWaiting">
+                No options
+            </div>
+            <div class="no-options" *ngIf="showWaiting && !displayOptions.length">
+                <mat-spinner diameter="20" strokeWidth="1" color="primary"></mat-spinner>
+            </div>
+            <!-- <div class="no-options" *ngIf="!displayOptions.length && !!gf.searchString.value">
+                No options meeting that search criteria. 
+            </div> -->
+        </section>
+    </div>
+</mat-menu>

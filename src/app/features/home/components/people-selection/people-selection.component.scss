@@ -1,0 +1,141 @@
+.search-form{
+    width: 100%;
+    transition: all 0.25s;
+    cursor: pointer;
+}
+
+.people-field{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+}
+.people-field .mat-input-element{
+    font-weight: 300 !important;
+    color: #ABABAB;
+    font-size: 14px;
+    padding-left: 0 !important;
+}
+.people-field .ng-valid{
+    color: var(--primary-text-black);
+}
+
+.close-icon{
+    cursor: pointer;
+    position: relative;
+    top: 2px;
+    left: 3px;
+    width: 15px;
+    padding: 0 10px;
+}
+.no-options {
+    color: var(--primary-error-red);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 0;
+    text-align: center;
+    line-height: 1.5;
+}
+
+.options-con {
+    overflow-y: auto;
+    max-height: 150px;
+    padding: 5px 0;
+}
+.options-con .option-item{
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    height: 40px;
+    cursor: pointer;
+}
+::ng-deep .options-con .option-item.highlighted{
+    color: var(--primary-blue);
+}
+.options-con .option-item .content{    
+    padding-left: 10px;
+    font-size: 12px;
+    display: flex;
+    width: 100%;
+    align-items: center;    
+    white-space: nowrap;text-overflow: ellipsis;overflow: hidden;
+    font-weight: 300;
+}
+.options-con .option-item .content .name{white-space: nowrap;text-overflow: ellipsis;overflow: hidden;}
+.options-con .option-item .content .divider{padding: 0 5px;}
+.options-con .option-item .content .email{white-space: nowrap;text-overflow: ellipsis;overflow: hidden;}
+
+.people-icon{
+    width: 15px;
+    padding: 0 10px 0 15px;
+    color: var(--primary-blue);    
+    position: relative;
+    top: 1px;
+}
+
+::ng-deep .options-con .highlighted .mat-checkbox-label{
+    color: var(--primary-blue);
+    font-weight: 500 !important;
+}
+.options-con div:hover{
+    color: var(--primary-blue);
+}
+
+::ng-deep .people-field .mat-form-field-wrapper{
+    width: 100%;
+}
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-start, 
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-end,
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-gap{
+    border-color: #F0F2F6 !important;
+}
+::ng-deep .mat-focused.mat-form-field-appearance-outline .mat-form-field-outline-start, 
+::ng-deep .mat-focused.mat-form-field-appearance-outline .mat-form-field-outline-end,
+::ng-deep .mat-focused.mat-form-field-appearance-outline .mat-form-field-outline-gap{
+    border-color: var(--primary-blue) !important;
+}
+// ::ng-deep .people-field.mat-form-field-appearance-fill .mat-form-field-flex{
+//     background-color: transparent;
+//     padding: 0;
+// }
+// ::ng-deep .people-field.mat-form-field-appearance-fill .mat-form-field-underline::before{
+//     background-color: transparent;
+//     background-color: var(--border-lightgray);
+// }
+::ng-deep .people-field .mat-form-field-ripple{
+    background-color: var(--border-lightgray);
+}
+::ng-deep .people-field.mat-form-field.mat-focused .mat-form-field-ripple{
+    background-color: var(--primary-blue);
+}
+// ::ng-deep .people-field.mat-form-field-appearance-fill .mat-form-field-ripple{
+//     height: 1px !important;
+// }
+::ng-deep .people-field.mat-form-field-appearance-outline .mat-form-field-infix{
+    padding: 8.5px 0 6.5px 0;
+}
+::ng-deep .people-field.mat-form-field-appearance-outline .mat-form-field-flex{
+    padding: 0;
+}
+
+
+
+::ng-deep .people-selection-menu{
+    margin-top: -20px !important;
+    box-shadow: 0px 20px 30px rgba(34, 41, 55, 0.05) !important;
+    border: 1px solid #f0F2F6;
+    border-top: none;
+    border-radius: 0 0 5px 5px !important;    
+}
+::ng-deep .people-selection-menu .mat-menu-content{
+    padding-top: 0 !important;
+}
+::ng-deep .people-selection-menu.mat-menu-panel{
+    max-width: none;
+    min-width: none;
+}
+
+
+

@@ -1,0 +1,40 @@
+<div class="page-con">
+    <div class="preference-con">
+        <img id="logo" src="../../../../../assets/logos/slated-full-logo2.png" alt="slated-full-logo">
+        <div class="sub-title">Welcome to Slated. Let's get you started.</div>
+        <div class="title">What is your preferred meeting schedule?</div>
+        <div class="inline-dropdown-con">
+            <app-inline-dropdown title="I'd like my meetings scheduled" titleSuffix="." placeholder="select how"
+                [options]="scheduleOptions" (change)="onSetSchedule($event)" (close)="onCloseSchedule($event)"
+                (open)="onOpenSchedule($event)" [selectedOptions]="selectedScheduleOptions" [showSearch]="false"
+                [tabindex]="1" [maxSelect]="1" [hideSelectAll]="true" [hideClearAll]="true" [isMenuOpenOnInit]="false"
+                [deferredMenuOpen]="isReady">
+            </app-inline-dropdown>
+            <app-inline-dropdown
+                *ngIf="(!!gf.preferredDistribution.value.length && !isScheduleOpen)||!!gf.maxDurationPerDay.value.length"
+                title="I prefer to spend at most" titleSuffix="&nbsp;&nbsp;a day in meetings"
+                placeholder="select duration" [options]="durationOptions" (change)="onSetDuration($event)"
+                [selectedOptions]="selectedDurationOptions" [showSearch]="false" [tabindex]="2" [maxSelect]="1"
+                [hideSelectAll]="true" [hideClearAll]="true">
+            </app-inline-dropdown>
+        </div>
+        <button class="blue-btn" mat-button (click)="next()" [disabled]="!preferenceForm.valid"
+            tabindex="3">Continue</button>
+        <div class="blue-text-btn skip-btn" (click)="skip()">Skip</div>
+        <div class="blue-text-btn" (click)="remindLater()">Remind me later</div>
+    </div>
+    <div style="flex: 1;"></div>
+    <div class="page-number">
+        <mat-icon class="left-arrow-icon" svgIcon="down-arrow" (click)="previous()">
+        </mat-icon>
+        <div class="txt"><span>2</span>/5</div>
+        <mat-icon class="right-arrow-icon" svgIcon="down-arrow" (click)="skip()">
+        </mat-icon>
+    </div>
+    <img id="chalkmark_bg_1" class="chalkmark_bg" src="../../../../../assets/chalk-marks/tick-lightgreen.png"
+        alt="spark-green">
+    <img id="chalkmark_bg_2" class="chalkmark_bg" src="../../../../../assets/chalk-marks/arrow-lightblue.png"
+        alt="arrow-lightblue">
+    <img id="chalkmark_bg_3" class="chalkmark_bg" src="../../../../../assets/chalk-marks/square-yellow.png"
+        alt="arrow-lightblue">
+</div>

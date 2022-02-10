@@ -1,0 +1,58 @@
+<div class="page-con">
+    <div class="preference-con">
+        <img id="logo" src="../../../../../assets/logos/slated-full-logo2.png" alt="slated-full-logo">
+        <div class="sub-title">Welcome to Slated. Let's get you started.</div>
+        <div class="title">Set aside some personal time</div>
+        <div class="inline-dropdown-con" *ngIf="!!selectedActivityOptions.length">
+            <div class="inline-dd-list-item" *ngFor="let item of selectedActivityOptions;let i=index;">
+                <mat-icon class="activity-icon" svgIcon="{{item.icon}}" aria-hidden="false"
+                    aria-label="activity svg icon" (click)="deleteActivity(i)">
+                </mat-icon>
+                <div class="activity-title">I {{item.selectedDisplayText||item.displayName}}</div>
+                <app-inline-dropdown title="at" placeholder="select time" [options]="activityTimeOptions"
+                    [selectedOptions]="getDefaultStartHour(item)" (change)="onSetActivityTime($event, item)"
+                    (close)="onCloseActivityTime($event, item)" (open)="onOpenActivityTime($event, item)"
+                    [showSearch]="true" [tabindex]="1+i*10" [hideSelectAll]="true" [hideClearAll]="true" [maxSelect]="1"
+                    [isMenuOpenOnInit]="false">
+                </app-inline-dropdown>
+                <app-inline-dropdown title="for" placeholder="select duration" [options]="activityDurationOptions"
+                    [selectedOptions]="getDefaultDuration(item)" (change)="onSetActivityDuration($event, item)"
+                    (close)="onCloseActivityDuration($event, item)" (open)="onOpenActivityDuration($event, item)"
+                    [showSearch]="true" [tabindex]="2+i*10" [hideSelectAll]="true" [hideClearAll]="true" [maxSelect]="1"
+                    [isMenuOpenOnInit]="false">
+                </app-inline-dropdown>
+                <mat-icon class="close-icon activity-delete-icon" svgIcon="close" aria-hidden="false"
+                    aria-label="close svg icon" (click)="deleteActivity(i)">
+                </mat-icon>
+            </div>
+        </div>
+        <div class="inline-dd-list">
+            <div class="inline-dd-list-item" *ngFor="let item of openActivityOptions;let i=index;">
+                <app-inline-dropdown title="I" placeholder="select activity" [options]="activityOptions"
+                    (change)="onSetActivity($event)" (close)="onCloseActivity($event)" (open)="onOpenActivity($event)"
+                    [changedOptions]="selectedActivityOptions" [showSearch]="true" [tabindex]="1000+i"
+                    [hideSelectAll]="false" [hideClearAll]="false" [isMenuOpenOnInit]="test" displayFn="activity"
+                    [isMenuOpenOnInit]="false" [deferredMenuOpen]="isReady">
+                </app-inline-dropdown>
+            </div>
+        </div>
+        <button class="blue-btn" mat-button (click)="next()" [disabled]="!selectedActivityOptions.length"
+            tabindex="2000">Continue</button>
+        <div class="blue-text-btn skip-btn" (click)="skip()">Skip</div>
+        <div class="blue-text-btn" (click)="remindLater()">Remind me later</div>
+        <div style="flex: 1;"></div>
+        <div class="page-number">
+            <mat-icon class="left-arrow-icon" svgIcon="down-arrow" (click)="previous()">
+            </mat-icon>
+            <div class="txt"><span>5</span>/5</div>
+            <mat-icon class="right-arrow-icon" svgIcon="down-arrow" (click)="skip()">
+            </mat-icon>
+        </div>
+    </div>
+    <img id="chalkmark_bg_1" class="chalkmark_bg" src="../../../../../assets/chalk-marks/tick-yellow.png"
+        alt="spark-green">
+    <img id="chalkmark_bg_2" class="chalkmark_bg" src="../../../../../assets/chalk-marks/wiggle-lightgreen.png"
+        alt="arrow-lightblue">
+    <img id="chalkmark_bg_3" class="chalkmark_bg" src="../../../../../assets/chalk-marks/spark-lightblue.png"
+        alt="arrow-lightblue">
+</div>

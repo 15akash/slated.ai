@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'slated.ai'`, () => {
+  it(`should have as title 'slated-mvp-webapp'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('slated.ai');
+    expect(app.title).toEqual('slated-mvp-webapp');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('slated.ai app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('slated-mvp-webapp app is running!');
   });
 });

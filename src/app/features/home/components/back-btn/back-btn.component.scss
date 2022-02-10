@@ -1,0 +1,19 @@
+.back-btn-con{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.back-icon{
+    color: var(--secondary-text-gray);
+    width: 15px;
+    transform: rotate(90deg);
+}
+.back-btn-con .back-txt{
+    font-size: 14px;
+    color: var(--secondary-text-gray);
+    padding-left: 10px;
+}
+
+.back-btn-con:hover .back-txt,.back-btn-con:hover .back-icon{
+    color: var(--primary-blue);
+}

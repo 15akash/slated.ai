@@ -1,0 +1,48 @@
+<div class="page-con">
+    <div class="menu-con">
+        <app-menu></app-menu>
+    </div>
+    <div class="home-con">
+        <img id="chalkmark_bg_1" src="../../../../../assets/chalk-marks/wiggle-lightgreen.png" alt="wiggle-lightgreen">
+        <div class="header-con">
+            <div class="left">
+                <app-search-input style="margin-right: 10px;display: none;" (search)="onSearch($event)"
+                    [defaultCollapse]="false" placeholder="Search for meetings" toolTipForCollapse="Search for meetings"
+                    [tabindex]="1">
+                </app-search-input>
+                <!-- <app-timezone-input (change)="onChangeTimeZone($event)"></app-timezone-input> -->
+            </div>
+            <div class="middle">
+                <!-- <app-connect-google-calendar fromPath="home"></app-connect-google-calendar> -->
+            </div>
+            <div class="right">
+                <button class="blue-btn narrow" type="button" mat-button (click)="startSchedule()">
+                    + Schedule a meeting
+                </button>
+                <button style="display: none;" class="white-btn narrow" type="button" mat-button
+                    (click)="startNoteTaker()">
+                    SlatedAI note taker
+                </button>
+            </div>
+        </div>
+        <div class="view-header-con">
+            <app-calendar-selection></app-calendar-selection>
+            <div style="flex: 1;"></div>
+            <button style="display: none;" class="gray-btn" type="button" mat-button (click)="startNoteTaker()">
+                + Add New Calendar
+            </button>
+            <app-timezone-input (change)="onChangeTimeZone($event)"></app-timezone-input>
+            <!-- <app-view-selection style="margin-left: 10px;"></app-view-selection> -->
+        </div>
+        <div class="meeting-group-con" *ngFor="let group of meetingGroups">
+            <div class="day-header">{{group.groupName}}</div>
+            <app-meeting-list-item *ngFor="let item of group.meetings" [data]="item" class="meeting-list-item"
+                (select)="onMeetingSelect($event, item, group)">
+            </app-meeting-list-item>
+        </div>
+    </div>
+    <div class="assistant-con">
+        <app-assistant [view]="assistantView" (back)="onBackFromAssistant($event)" [meetingData]="assistantMeetingData">
+        </app-assistant>
+    </div>
+</div>

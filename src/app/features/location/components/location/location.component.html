@@ -1,0 +1,66 @@
+<div class="location-con">
+    <div class="location-con2">
+        <div class="map-con" [ngClass]="{'map-disabled':disableMap}">
+            <app-search-input class="search-con" (search)="onSearch($event)" [defaultCollapse]="false"
+                placeholder="Search for locations" [tabindex]="1">
+            </app-search-input>
+            <div class="search-result-con">
+                <app-search-list-item *ngFor="let item of searchLocations;let i=index;" [data]="item"
+                    (click)="onSelectSearchResult(item,i)"></app-search-list-item>
+            </div>
+            <div *ngIf="apiLoaded | async">
+                <google-map #gmap width="100%" height="95vh" [center]="center" [options]="mapOptions"
+                    (mapClick)="onMapClick($event)" (mapMousemove)="onMapMousemove($event)">
+                </google-map>
+            </div>
+            <div class="highlight-con" *ngIf="!!currentHighlight">
+                <app-location-msg *ngIf="currentHighlight!='selectedPlace'" [msgType]="currentHighlight">
+                </app-location-msg>
+                <app-selected-place style="width: 100%;" *ngIf="currentHighlight=='selectedPlace'"
+                    [data]="selectedPlace">
+                </app-selected-place>
+            </div>
+        </div>
+        <div class="list-con">
+            <div class="title" [ngClass]="{'map-disabled':disableMap}">Click to select or unselect locations</div>
+            <div class="list" [ngClass]="{'map-disabled':disableMap}" #scrollCon>
+                <div class="subtitle" *ngIf="!mapLocations.length && !defaultLocation">
+                    <p>No recommended places here.</p>
+                    <p>Select a location from the map or search for places</p>
+                </div>
+                <div class="subtitle" *ngIf="!!defaultLocation">Current location <span
+                        *ngIf="locationAccuracy!=null">(accurate to {{locationAccuracy}}m)</span></div>
+                <app-location-list-item *ngIf="!!defaultLocation" [data]="defaultLocation.location"
+                    (select)="onSelectLocation($event)" (remove)="onRemoveLocation($event)"></app-location-list-item>
+
+                <div class="subtitle" *ngIf="!!mapLocations.length">Recommended places</div>
+                <div class="wait-con" *ngIf="showWaiting">
+                    <mat-spinner diameter="20" strokeWidth="1" color="primary"></mat-spinner>
+                </div>
+                <app-location-list-item *ngFor="let item of mapLocations" [data]="item.location"
+                    [isSelected]="selectedLatLngIds.indexOf(item.location.latLngId||'')>=0"
+                    (select)="onSelectLocation($event)" (remove)="onRemoveLocation($event)"></app-location-list-item>
+            </div>
+            <form class="location-form" [formGroup]="locationForm">
+                <mat-radio-group class="radio-field" aria-label="Select an option"
+                    formControlName="locationSelectionType">
+                    <mat-radio-button *ngFor="let item of locationSelectionTypeOptions" value="{{item.value}}"
+                        [disabled]="item.disabled" [disableRipple]="true">
+                        {{item.displayName}}
+                    </mat-radio-button>
+                </mat-radio-group>
+                <mat-form-field class="location-field" appearance="outline"
+                    *ngIf="gf.locationSelectionType.value=='custom'">
+                    <textarea matInput placeholder='Type location here if not on maps. For example, "conference room A"'
+                        formControlName="typedLocation" rows="3" #typedLocation></textarea>
+                </mat-form-field>
+            </form>
+            <button class="blue-btn save-btn" type="button" mat-button (click)="onSave()" [disabled]="disableSave">
+                Save
+            </button>
+        </div>
+        <mat-icon class="close-icon" svgIcon="close" aria-hidden="false" aria-label="close SVG icon"
+            (click)="closeDialog()">
+        </mat-icon>
+    </div>
+</div>

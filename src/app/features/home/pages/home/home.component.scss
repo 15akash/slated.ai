@@ -1,0 +1,64 @@
+@import '../../home.scss';
+
+.home-con{
+    flex: 1;
+    padding: 30px 30px 0 30px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: relative;
+}
+#chalkmark_bg_1{
+    position: absolute;
+    top: 16%;
+    left: 41%;
+    width: 7vw;
+    display: none;
+}
+
+.assistant-con{
+    width: 35vh;
+    padding: 30px 30px 30px 0;
+    max-width: 300px;
+    min-width: 275px;
+}
+
+
+
+.header-con{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    overflow-x: auto;
+}
+.header-con .left{
+    display: flex;
+}
+.header-con .middle{
+    flex: 1;
+}
+.header-con .right{
+    display: flex;    
+}
+.header-con .right button{
+    margin-left: 10px;
+}
+
+
+.view-header-con{
+    width: 100%;
+    display: flex;
+    padding: 30px 0 0 0;
+}
+.day-header{
+    color: #8E95A5;
+    font-weight: 300;
+    line-height: 130%;
+    font-size: 14px;
+    margin-bottom: 10px;
+    z-index: 2;
+    position: relative;
+}
+.meeting-list-item{
+    position: relative;
+    z-index: 2;
+}

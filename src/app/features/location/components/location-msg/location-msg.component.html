@@ -1,0 +1,22 @@
+<div class="con">
+    <div class="left">
+        <mat-icon class="highlight-icon" svgIcon="location" aria-hidden="false" aria-label="SVG icon" [ngClass]="{'red-icon':
+            (msgType=='browserNotSupported') || 
+            (msgType=='deniedLocation') || 
+            (msgType=='invalidLocation')
+        }">
+        </mat-icon>
+    </div>
+    <div class="right">
+        <div class="msg" *ngIf="msgType=='invalidLocation'">
+            No valid meeting location found at the selected point.</div>
+        <div class="msg" *ngIf="msgType=='detectingLocation'">
+            Detecting current location...</div>
+        <div class="msg" *ngIf="msgType=='browserNotSupported'">
+            Unable to detect current location
+            on this
+            browser. Try chrome.</div>
+        <div class="msg" *ngIf="msgType=='deniedLocation'">Failed to detect current location. Check
+            if you have given location permission for this browser.</div>
+    </div>
+</div>

@@ -1,0 +1,57 @@
+<div class="timezone-input-con" (menuOpened)="onOpenMenu()" (menuClosed)="onCloseMenu()"
+    [matMenuTriggerFor]="timezoneMenu" tabindex="{{tabindex*1}}" #inlineInputHold>
+    <mat-icon class="timezone-icon" svgIcon="timezone" aria-hidden="false" aria-label="timezone svg icon">
+    </mat-icon>
+    <div class="inline-input-hold">
+        <div class="inline-placeholder" *ngIf="!selectedOptions.length">{{placeholder}}</div>
+        <div class="inline-selected-list" *ngIf="!!selectedOptions.length">
+            <span class="display-gmt">
+                {{selectionDisplayString1}}
+            </span>
+            <!-- <span class="divider">&bullet;</span> -->
+            <span class="divider"></span>
+            <span class="display-abbreviation">
+                {{selectionDisplayString2}}
+            </span>
+            <!-- <span class="divider">&bullet;</span>
+            <span class="display-currentTime">
+                {{selectionDisplayString3}}
+            </span> -->
+        </div>
+    </div>
+    <mat-icon class="downarrow-icon" svgIcon="down-arrow" aria-hidden="false" aria-label="timezone svg icon">
+    </mat-icon>
+</div>
+<mat-menu #timezoneMenu="matMenu" xPosition="after" yPosition="below" class="timezone-menu">
+    <div class="menu-con" (click)="onMenuClick($event)">
+        <div class="search-con">
+            <app-search-input (search)="onSearch($event)" #timezoneInput></app-search-input>
+        </div>
+        <div class="scroll-title">
+            <div class="title1">Timezone</div>
+            <div class="title2" style="display: none;">
+                <span class="gmt">GMT</span>
+                <span class="divider">&bullet;</span>
+                <span class="current-time">Local time</span>
+            </div>
+        </div>
+        <section class="options-con" [formGroup]="optionForm" #scrollCon>
+            <div *ngFor="let item of displayOptions;let i=index;"
+                [ngClass]="{'highlighted':isMenuOpen && (i==highlightIdx)}">
+                <mat-checkbox class="timezone-checkbox" [ngClass]="{'single-select':maxSelect==1}"
+                    formControlName="{{item._id}}" (change)="onChange($event.checked, item, i)" defaultTabIndex="0">
+                    <span class="displayText">{{item.displayText||""}}</span>
+                    <span class="display-gmt">{{item.displayGMT||""}}</span>
+                    <!-- <span class="divider">&bullet;</span> -->
+                    <span class="current-time">{{item.displayLocalCurrentTime||""}}</span>
+                </mat-checkbox>
+            </div>
+            <div class="no-options" *ngIf="!displayOptions.length && !searchString">
+                No options
+            </div>
+            <div class="no-options" *ngIf="!displayOptions.length && !!searchString">
+                No options meeting that search criteria
+            </div>
+        </section>
+    </div>
+</mat-menu>

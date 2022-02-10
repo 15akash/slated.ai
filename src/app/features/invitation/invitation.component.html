@@ -1,0 +1,121 @@
+<div class="page-con">
+    <app-public-header class="header-con"></app-public-header>
+    <div class="content-con">
+        <div class="left">
+            <div class="title-con" *ngIf="!!meetingData">
+                <div class="title">{{meetingData.name||""}}</div>
+                <app-status status="{{meetingData.status}}"></app-status>
+            </div>
+            <div class="details-con">
+                <div class="sub-title">Meeting info</div>
+                <div class="meeting-detail-con">
+                    <div class="meeting-detail-item">
+                        <mat-icon class="meeting-icon" svgIcon="focus-time" aria-hidden="false" aria-label="SVG icon">
+                        </mat-icon>
+                        <div class="text">{{durationDisplayStr}}</div>
+                    </div>
+                    <div class="meeting-detail-item" *ngIf="meetingData && meetingData.location">
+                        <mat-icon class="meeting-icon" svgIcon="location" aria-hidden="false" aria-label="SVG icon">
+                        </mat-icon>
+                        <div class="text">{{meetingData.location}}</div>
+                    </div>
+                    <div class="meeting-detail-item" *ngIf="meetingTimeDisplayStr">
+                        <mat-icon class="meeting-icon" svgIcon="clock" aria-hidden="false" aria-label="SVG icon">
+                        </mat-icon>
+                        <div class="text">{{meetingTimeDisplayStr}}</div>
+                    </div>
+                </div>
+                <div class="sub-title">People</div>
+                <!-- <app-people-selection placeholder="Type name or email to search" (select)="onSelectPeople($event)">
+                </app-people-selection> -->
+                <div class="attendee-list-con">
+                    <div class="attendee-list-item" *ngFor="let item of attendees">
+                        <app-people-list-item class="attendee-list-item" [data]="item"
+                            [notEditable]="meetingData.status=='cancelled'" [nonRemovable]="!editable"
+                            (change)="onPeopleMoreClick($event)" displayType="border" [showStatus]="true">
+                        </app-people-list-item>
+                    </div>
+                </div>
+                <div style="flex: 1;"></div>
+                <div class="action-con">
+                    <!-- <button *ngIf="!editable" class="blue-btn narrow action-btn" type="button" mat-button
+                        (click)="startEdit()" [disabled]="!inviteeSelectedTimeslot">
+                        Accept invite
+                    </button> -->
+                    <button style="display: none;" *ngIf="isLoggedIn && editable" class="blue-btn narrow action-btn"
+                        type="button" mat-button (click)="startEdit()">
+                        Edit meeting
+                    </button>
+                    <button *ngIf="isLoggedIn && editable" class="white-btn narrow action-btn" type="button" mat-button
+                        (click)="startCancel()" [disabled]="meetingData.status=='cancelled'">
+                        Cancel meeting
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="right">
+            <div class="wait-con" [ngClass]="{'loading':isLoadingBestTime}">
+                <mat-spinner class="spinner" diameter="30" strokeWidth="1" color="primary"></mat-spinner>
+                <div class="wait-txt">Getting best times...</div>
+            </div>
+            <div class="calendar-hold" *ngIf="!!meetingData">
+                <div class="title" *ngIf="hostTimeslots.length">Suggested by
+                    host:</div>
+                <div class="host-time-slot-list">
+                    <app-time-slot class="timeslot-list-item-con" theme="dark" *ngFor="let item of hostTimeslots"
+                        [data]="item" [isSelected]="!!item.isSelected" (select)="onSelect($event,'timeslot')"
+                        (confirm)="onConfirm($event,'hostTime')" [notEditable]="meetingData.status=='cancelled'"
+                        [type]="'meetingLink'">
+                    </app-time-slot>
+                </div>
+
+
+                <div *ngIf="meetingData && meetingData.allowInviteeBestTime">
+                    <div class="title" style="margin-top: 15px;"
+                        *ngIf="hostTimeslots.length && !inviteeTimeslots.length">
+                        These times won't work for you? <br><br>Find another time that works for everyone:</div>
+                    <div class="title" style="margin-top: 15px;"
+                        *ngIf="!hostTimeslots.length && !inviteeTimeslots.length">
+                        Find a time that work for everyone:</div>
+                    <div *ngIf="!inviteeTimeslots.length" class="btn-con">
+                        <div *ngIf="!isLoggedIn" style="text-align: center;">
+                            <!-- <button class="blue-btn narrow action-btn" type="button" mat-button (click)="startLogin()">
+                                Sign up & connect calendar
+                            </button> -->
+                            <app-connect-google-calendar title="Sign up & connect calendar" theme="dark">
+                            </app-connect-google-calendar>
+                            <div class="calendar-msg">
+                                Your calendar data is encrypted and will not be visible to host, other attendees or
+                                slated
+                                employees.
+                            </div>
+                        </div>
+                        <div *ngIf="!hasCalendarAccess && isLoggedIn">
+                            <app-connect-google-calendar theme="dark">
+                            </app-connect-google-calendar>
+                            <div class="calendar-msg">
+                                Your calendar data is encrypted and will not be visible to host, other attendees or
+                                slated
+                                employees.
+                            </div>
+                        </div>
+                        <div *ngIf="hasCalendarAccess" class="btn-con">
+                            <button class="assistant-gray-btn" type="button" mat-button (click)="getBestTimes()"
+                                [disabled]="meetingData.status=='cancelled'">
+                                Get best times
+                            </button>
+                        </div>
+                    </div>
+                    <div class="title" style="margin-top: 15px;" *ngIf="inviteeTimeslots.length">
+                        Times that work for everyone:
+                    </div>
+                    <app-time-slot class="timeslot-list-item-con" theme="dark" *ngFor="let item of inviteeTimeslots"
+                        [data]="item" [isSelected]="!!item.isSelected" (select)="onSelect($event,'timeslot')"
+                        (confirm)="onConfirm($event,'bestTime')" [type]="'meetingLink'"
+                        [notEditable]="meetingData.status=='cancelled'">
+                    </app-time-slot>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

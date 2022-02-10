@@ -1,0 +1,38 @@
+@import '../../login.scss';
+
+.content-con {
+    width: 80vw;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    align-items: center;
+}
+.policy-con #logo{
+    margin: 50px 0;
+}
+.policy-text {
+    margin-bottom: 50px;
+    line-height: 1.5;
+    font-weight: 300;
+    background-color: white;
+    padding: 5%;
+    border-radius: 5px;
+    z-index: 2;
+    position: relative;
+}
+.policy-text .title{margin: 15px 0 30px 0;text-align: center;}
+.back-btn{margin-bottom: 100px;}
+
+#chalkmark_bg_1{
+    width: 6vw;
+    position: absolute;
+    top: -5%;
+    right: -7%;
+    z-index: 1;
+}
+#chalkmark_bg_2{
+    width: 7vw;
+    left: -6%;
+    position: absolute;
+    bottom: -1%;
+}

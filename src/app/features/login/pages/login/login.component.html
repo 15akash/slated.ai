@@ -1,0 +1,52 @@
+<div class="page-con">
+    <div class="login-con">
+        <img id="logo" src="../../../../../assets/logos/slated-full-logo2.png" alt="slated-full-logo">
+        <div *ngIf="viewState=='login'" class="title">Log in via Google</div>
+        <div *ngIf="viewState=='signup'" class="title">Sign up via Google</div>
+        <div class="social-con">
+            <div class="social-btn social-btn1" (click)="signInWithGoogle()">
+                <img src="../../../../../assets/integrations/google-logo.svg" alt="google-logo">
+                <div>Google</div>
+            </div>
+            <div class="social-btn social-btn2" style="display: none;" (click)="signInWithMicrosoft()">
+                <img src="../../../../../assets/integrations/microsoft-logo.svg" alt="microsoft-logo">
+                <div>Microsoft</div>
+            </div>
+        </div>
+        <div class="divider" style="display: none;">
+            <div class="line"></div>
+            <div class="or">or</div>
+            <div class="line"></div>
+        </div>
+        <form class="login-form" [formGroup]="loginForm" style="display: none;">
+            <mat-form-field class="form-field" appearance="outline">
+                <!-- <mat-label>Enter your email</mat-label> -->
+                <mat-icon class="input-icon" matPrefix svgIcon="email" aria-hidden="false"
+                    aria-label="Example thumbs up SVG icon"
+                    [ngClass]="{'error-icon':glf.email.dirty && glf.email.errors!==null}">
+                </mat-icon>
+                <input type="email" matInput formControlName="email" placeholder="Enter your email"
+                    [errorStateMatcher]="errorMatcher">
+                <mat-error *ngIf="glf.email.errors?.email && !glf.email.errors?.required">
+                    * Please enter a valid email address
+                </mat-error>
+                <mat-error *ngIf="glf.email.errors?.required">
+                    * Your email is required
+                </mat-error>
+            </mat-form-field>
+        </form>
+        <button style="display: none;" class="blue-btn" type="button" mat-button (click)="startLogin()"
+            [disabled]="!loginForm.valid">
+            {{viewState=='login'?'Log in':'Create an account'}}
+        </button>
+        <div class="signup-msg" *ngIf="viewState=='login'">
+            Don't have an account? <span class="blue-text-btn" (click)="changeViewState('signup')">Sign Up</span>
+        </div>
+        <div class="signup-msg" *ngIf="viewState=='signup'">
+            Already have an account? <span class="blue-text-btn" (click)="changeViewState('login')">Log In</span>
+        </div>
+    </div>
+    <app-footer></app-footer>
+    <img id="chalkmark_bg_1" src="../../../../../assets/chalk-marks/spark-green.png" alt="spark-green">
+    <img id="chalkmark_bg_2" src="../../../../../assets/chalk-marks/arrow-lightblue.png" alt="arrow-lightblue">
+</div>

@@ -1,0 +1,52 @@
+<div class="page-con">
+    <div class="login-con">
+        <img id="logo" src="../../../../../assets/logos/slated-full-logo2.png" alt="slated-full-logo">
+        <div class="title">Enter the verification code</div>
+        <div class="sub-title">A verification code is sent to: <span>{{glf.email.value}}</span></div>
+        <form class="login-form" [formGroup]="loginForm">
+            <mat-form-field class="form-field" appearance="outline" style="display: none;">
+                <mat-icon class="input-icon" matPrefix svgIcon="email" aria-hidden="false"
+                    aria-label="Example thumbs up SVG icon"
+                    [ngClass]="{'error-icon':glf.email.dirty && glf.email.errors!==null}">
+                </mat-icon>
+                <input type="email" matInput formControlName="email" placeholder="Enter your email"
+                    [errorStateMatcher]="errorMatcher" readonly>
+                <mat-error *ngIf="glf.email.errors?.email && !glf.email.errors?.required">
+                    * Please enter a valid email address
+                </mat-error>
+                <mat-error *ngIf="glf.email.errors?.required">
+                    * Your email is required
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="form-field" appearance="outline">
+                <mat-icon class="input-icon" matPrefix svgIcon="lock" aria-hidden="false" aria-label="Lock SVG icon"
+                    [ngClass]="{'error-icon':glf.otp.dirty && glf.otp.errors!==null}">
+                </mat-icon>
+                <input type="number" matInput formControlName="otp" [errorStateMatcher]="errorMatcher2"
+                    placeholder="Verification code" autocomplete="off" #verificationCode>
+                <mat-error *ngIf="glf.otp.errors?.min || glf.otp.errors?.max">
+                    * Enter a valid verification code
+                </mat-error>
+                <mat-error *ngIf="glf.otp.errors?.required">
+                    * Verification code is required
+                </mat-error>
+                <button *ngIf="glf.otp.value" matSuffix mat-icon-button aria-label="Clear"
+                    (click)="loginForm.patchValue({otp:null})">
+                    <mat-icon color="warn">close</mat-icon>
+                </button>
+            </mat-form-field>
+        </form>
+        <button class="blue-btn" type="button" mat-button (click)="startLogin()" [disabled]="!loginForm.valid">
+            Confirm
+        </button>
+        <div class="signup-msg" *ngIf="resendCount==0">
+            Didn't receive code? <span class="blue-text-btn" (click)="startResend()">Resend the code</span>
+        </div>
+        <div class="signup-msg" *ngIf="resendCount>0">
+            Resend code in <span class="blue-text-btn">00:{{(resendCount>9?'':'0')+resendCount}}</span>
+        </div>
+    </div>
+    <app-footer></app-footer>
+    <img id="chalkmark_bg_1" src="../../../../../assets/chalk-marks/spark-green.png" alt="spark-green">
+    <img id="chalkmark_bg_2" src="../../../../../assets/chalk-marks/arrow-lightblue.png" alt="arrow-lightblue">
+</div>

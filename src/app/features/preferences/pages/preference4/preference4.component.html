@@ -1,0 +1,38 @@
+<div class="page-con">
+    <div class="preference-con">
+        <img id="logo" src="../../../../../assets/logos/slated-full-logo2.png" alt="slated-full-logo">
+        <div class="sub-title">Welcome to Slated. Let's get you started.</div>
+        <div class="title">What is your primary job?</div>
+        <div class="inline-dropdown-con">
+            <app-inline-dropdown title="I am a" placeholder="select role" [options]="roleOptions"
+                (change)="onSetRole($event)" (close)="onCloseRole($event)" (open)="onOpenRole($event)"
+                [selectedOptions]="selectedRoleOptions" [showSearch]="true" [tabindex]="2" [maxSelect]="1"
+                [hideSelectAll]="true" [hideClearAll]="true" [isMenuOpenOnInit]="false" [deferredMenuOpen]="isReady">
+            </app-inline-dropdown>
+            <app-inline-dropdown *ngIf="(!!gf.workRole.value.length && !isRoleOpen)||!!gf.workIndustry.value.length"
+                title="using Slated for" placeholder="select industry" [options]="workOptions"
+                (change)="onSetWork($event)" (close)="onCloseWork($event)" (open)="onOpenWork($event)"
+                [selectedOptions]="selectedWorkOptions" [showSearch]="true" [tabindex]="1" [maxSelect]="1"
+                [hideSelectAll]="true" [hideClearAll]="true">
+            </app-inline-dropdown>
+        </div>
+        <button class="blue-btn" mat-button (click)="next()" [disabled]="!preferenceForm.valid"
+            tabindex="3">Continue</button>
+        <div class="blue-text-btn skip-btn" (click)="skip()">Skip</div>
+        <div class="blue-text-btn" (click)="remindLater()">Remind me later</div>
+    </div>
+    <div style="flex: 1;"></div>
+    <div class="page-number">
+        <mat-icon class="left-arrow-icon" svgIcon="down-arrow" (click)="previous()">
+        </mat-icon>
+        <div class="txt"><span>4</span>/5</div>
+        <mat-icon class="right-arrow-icon" svgIcon="down-arrow" (click)="skip()">
+        </mat-icon>
+    </div>
+    <img id="chalkmark_bg_1" class="chalkmark_bg" src="../../../../../assets/chalk-marks/spark-lightgreen.png"
+        alt="spark-green">
+    <img id="chalkmark_bg_2" class="chalkmark_bg" src="../../../../../assets/chalk-marks/arrow-lightblue.png"
+        alt="arrow-lightblue">
+    <img id="chalkmark_bg_3" class="chalkmark_bg" src="../../../../../assets/chalk-marks/tick-yellow.png"
+        alt="arrow-lightblue">
+</div>

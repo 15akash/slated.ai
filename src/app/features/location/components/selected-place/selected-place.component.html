@@ -1,0 +1,21 @@
+<div class="con">
+    <div class="left">
+        <img *ngIf="!!photoUrl" src="{{photoUrl}}" alt="photo">
+    </div>
+    <div class="right">
+        <div class="row1" *ngIf="!!data && !!data.name">{{data.name}}</div>
+        <div class="row2" *ngIf="!!data.formatted_address || !!data.vicinity">
+            <mat-icon class="row-icon" svgIcon="location" aria-hidden="false" aria-label="SVG icon"></mat-icon>
+            <span>{{data.formatted_address||data.vicinity}}</span>
+        </div>
+        <a *ngIf="data && !!data.formatted_phone_number||!!data.international_phone_number" class="row2"
+            href="tel:{{data.formatted_phone_number||data.international_phone_number}}" target="_blank">
+            <mat-icon class="row-icon" svgIcon="call" aria-hidden="false" aria-label="SVG icon"></mat-icon>
+            <span>{{data.formatted_phone_number||data.international_phone_number}}</span>
+        </a>
+        <a *ngIf="data && !!data.website" class="row2" href="{{data.website}}" target="_blank">
+            <mat-icon class="row-icon" svgIcon="link" aria-hidden="false" aria-label="SVG icon"></mat-icon>
+            <span>{{data.website}}</span>
+        </a>
+    </div>
+</div>

@@ -1,0 +1,135 @@
+@import '../../home.scss';
+
+.preview-con{
+    flex: 1;
+    padding: 30px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+.header{margin-bottom: 15px;}
+.content-con{
+    display: flex;
+    flex: 1;
+    padding-bottom: 30px;
+    flex-direction: column;
+    max-width: 900px;
+}
+.content-con .slide-input-con{
+    margin-top: 30px;    
+    display: flex;
+    align-items: center;
+    flex-flow: wrap;
+}
+.content-con .slide-input-con .slide-input{
+    margin: 0 15px;
+}
+
+.full-field,.form-field{
+    width: 100%;
+}
+
+.email-content-field{
+    width: 100%;
+    position: relative;
+}
+.copy-icon{
+    width: 15px;
+    cursor: pointer;
+    color: var(--icon-gray);
+}
+.email-content-field .copy-icon{    
+    padding: 5px;
+    position: absolute;
+    top:5px;
+    right: 5px;
+}
+.email-content-field .editor{
+    color: var(--primary-text-gray);
+    padding: 15px;
+    border: 1px solid var(--border-lightgray);
+    border-radius: 5px;
+}
+.email-content-field .editor:focus{
+    outline: none;
+    border: 1px solid var(--primary-blue);
+}
+.email-content-field .editor .highlight{
+    color: var(--primary-text-black);
+}
+.email-content-field .editor a{
+    cursor: pointer;
+    color: var(--primary-blue);
+}
+.email-content-field .editor .editor-inline{
+    display: inline;
+}
+.email-content-field .editor .link{
+    display: inline-flex;
+    align-items: center;
+    padding: 0 5px;
+}
+.link-icon{
+    width: 15px;
+    height: 15px;
+    color: var(--primary-blue);
+    padding-left: 2px;
+    position: relative;
+    top: 1px;
+}
+
+
+.timeslot-list-con{
+    display: flex;
+    margin: 15px 0;
+    flex-flow: wrap;
+}
+.timeslot-list-item-con{
+    margin: 0px 7.5px 15px 7.5px;
+}
+
+.numTimeslot-field{
+    width: 50px;
+}
+
+.field-text{
+    font-weight: 300;
+    color: var(--primary-text-black);
+    padding-left: 5px;    
+}
+
+.list-input-title{
+    font-weight: 300;
+    color: var(--primary-text-black);
+}
+.action-con{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 30px;
+    border-top: 1px solid var(--border-lightgray);
+}
+.action-con .action-btn{
+    margin: 0 0 15px 15px;
+    max-width: 250px;
+}
+
+
+::ng-deep .title-field .mat-input-element{    
+    color: var(--primary-text-black);
+    font-weight: 400 !important;
+    font-size: 14px;    
+}
+
+
+::ng-deep .mat-simple-snackbar-action{
+    color: var(--assistant-yellow) !important;
+}
+::ng-deep .mat-simple-snackbar{
+    font-family: 'Lexend',sans-serif;
+    font-weight: 300;
+    color: var(--border-lightgray);
+}
+::ng-deep .mat-snack-bar-container{
+    background-color: var(--assistant-bg);
+}

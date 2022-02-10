@@ -1,0 +1,240 @@
+<div class="page-con">
+  <div class="menu-con">
+    <app-menu selectedPage="people"></app-menu>
+  </div>
+  <div class="account-con">
+    <div class="contacts-toggle-con">
+      <h3>People</h3>
+      <div class="divider"></div>
+      <app-list-input></app-list-input>
+    </div>
+    <div class="people-con">
+      <div class="people-list">
+        <app-people-list-item
+          *ngFor="let item of attendees"
+          [data]="item"
+          [ngClass]="{
+            'active-class': item.email === displayAttendee.email
+          }"
+          (click)="selectedAttendee(item)"
+        ></app-people-list-item>
+      </div>
+      <div class="people-info-con">
+        <!-- Assistant container copied -->
+
+        <div class="assistant-con">
+          <div class="assistant-content">
+            <div class="header-con">
+              <img
+                class="avatar"
+                src="https://cdn-icons-png.flaticon.com/512/147/147144.png"
+                alt=""
+              />
+
+              <div class="title">
+                <div class="person-name">{{ displayAttendee.name }}</div>
+                <div class="person-designation">Co-founder Apple</div>
+              </div>
+              <div class="more-con" (click)="showMoreList()">
+                <mat-icon
+                  class="more-icon"
+                  svgIcon="more-horizontal"
+                  aria-hidden="false"
+                  aria-label="more-horizontal svg icon"
+                >
+                </mat-icon>
+              </div>
+            </div>
+            <div class="black-box-divider"></div>
+            <div class="content-con">
+              <div class="content-title">
+                <mat-tab-group>
+                  <!-- Personal Info  -->
+
+                  <mat-tab label="Personal Info">
+                    <img
+                      id="chalkmark_bg_2"
+                      src="../../../../../assets/chalk-marks/wiggle-yellow.png"
+                      alt="yellow-scribble"
+                    />
+                    <div class="personal-info">
+                      <div class="particular-detail">
+                        <div class="icon-con">
+                          <mat-icon class="icons" svgIcon="email2"></mat-icon>
+                        </div>
+                        {{ displayAttendee.email }}
+                      </div>
+                      <div class="particular-detail">
+                        <div class="icon-con">
+                          <mat-icon
+                            class="icons"
+                            svgIcon="briefcase"
+                          ></mat-icon>
+                        </div>
+                        Co-founder Apple
+                      </div>
+                      <div class="particular-detail">
+                        <div class="icon-con">
+                          <mat-icon class="icons" svgIcon="call"></mat-icon>
+                        </div>
+                        +2 383 282 2822
+                      </div>
+                      <div class="particular-detail">
+                        <div class="icon-con">
+                          <mat-icon class="icons" svgIcon="timezone"></mat-icon>
+                        </div>
+                        10:00 am, California, US
+                      </div>
+                    </div>
+                    <div class="black-box-divider"></div>
+                    <div class="social-media-box">
+                      <div class="social-account">
+                        <a href=""
+                          ><div class="icon-con">
+                            <mat-icon
+                              class="icons"
+                              svgIcon="linkedin"
+                            ></mat-icon>
+                          </div>
+                          Linkedin</a
+                        >
+                      </div>
+                      <div class="social-account">
+                        <a href=""
+                          ><div class="icon-con">
+                            <mat-icon class="icons" svgIcon="github"></mat-icon>
+                          </div>
+                          GitHub</a
+                        >
+                      </div>
+                      <div class="social-account">
+                        <a href=""
+                          ><div class="icon-con">
+                            <mat-icon
+                              class="icons"
+                              svgIcon="facebook"
+                            ></mat-icon>
+                          </div>
+                          Facebook</a
+                        >
+                      </div>
+                      <div class="social-account">
+                        <a href="www.twitter.com"
+                          ><div class="icon-con">
+                            <mat-icon
+                              class="icons"
+                              svgIcon="twitter"
+                            ></mat-icon>
+                          </div>
+                          Twitter</a
+                        >
+                      </div>
+                    </div>
+                  </mat-tab>
+
+                  <!--     Meetings    -->
+
+                  <mat-tab label="Meetings">
+                    <div class="meetings-tab">
+                      <mat-expansion-panel
+                        (opened)="panelOpenState = true"
+                        (closed)="panelOpenState = false"
+                      >
+                        <mat-expansion-panel-header>
+                          <mat-panel-title> Upcoming Meetings </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <div *ngFor="let meeting of upcomingMeetings()">
+                          <div class="meeting-con">
+                            <div class="icon-con">
+                              <mat-icon
+                                class="icons"
+                                svgIcon="calendar"
+                              ></mat-icon>
+                            </div>
+                            <div class="meeting-schedule">
+                              <div class="meeting-name">{{ meeting.name }}</div>
+                              <div class="meeting-date">
+                                {{ meeting.displayStartDate }},
+                                {{ meeting.startDateTime }}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </mat-expansion-panel>
+                      <div class="black-box-divider"></div>
+                      <img
+                        id="chalkmark_bg_meeting_tab"
+                        src="../../../../../assets/chalk-marks/wiggle-yellow.png"
+                        alt="yellow-scribble"
+                      />
+                      <mat-expansion-panel
+                        (opened)="panelOpenState = true"
+                        (closed)="panelOpenState = false"
+                      >
+                        <mat-expansion-panel-header>
+                          <mat-panel-title> Previous Meetings </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <div *ngFor="let meeting of previousMeetings()">
+                          <div class="meeting-con">
+                            <div class="icon-con">
+                              <mat-icon
+                                class="icons"
+                                svgIcon="calendar"
+                              ></mat-icon>
+                            </div>
+                            <div class="meeting-schedule">
+                              <div class="meeting-name">{{ meeting.name }}</div>
+                              <div class="meeting-date">
+                                {{ meeting.displayStartDate }},
+                                {{ meeting.startDateTime }}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </mat-expansion-panel>
+                    </div>
+                  </mat-tab>
+
+                  <!--     Notes   -->
+
+                  <mat-tab label="Notes"> Content 3 </mat-tab>
+                </mat-tab-group>
+              </div>
+            </div>
+            <img
+              id="chalkmark_bg_1"
+              src="../../../../../assets/assistant/blue-round-2.png"
+              alt="blue-round"
+            />
+
+            <div class="more-list-con" [ngClass]="{ open: isShowingMore }">
+              <div class="list-close-con" (click)="closeMoreList()">
+                <mat-icon
+                  class="close-icon"
+                  svgIcon="close-gray"
+                  aria-hidden="false"
+                  aria-label="close svg icon"
+                >
+                </mat-icon>
+              </div>
+              <div
+                class="more-list-item"
+                *ngFor="let item of moreList"
+                (click)="handleAccountActions(item)"
+              >
+                <mat-icon
+                  class="list-icon"
+                  svgIcon="{{ item.icon }}"
+                  aria-hidden="false"
+                  aria-label="close svg icon"
+                >
+                </mat-icon>
+                <div class="list-item-text">{{ item.displayName }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

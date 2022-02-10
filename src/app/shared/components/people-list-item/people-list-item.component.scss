@@ -1,0 +1,97 @@
+.people-list-item-con{
+    padding: 0 0 0 15px;
+    display: flex;
+    align-items: center;
+    height: 40px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 1px solid var(--border-lightgray);
+}
+.people-list-item-con.notEditable{
+    cursor: auto;
+}
+.people-list-item-con.no-border{
+    border: none;
+}
+.people-list-item-con:hover{
+    color: var(--primary-blue);
+}
+.people-list-item-con.notEditable:hover{
+    color: inherit;
+}
+
+.people-list-item-con .content{    
+    padding-left: 10px;
+    font-size: 12px;
+    display: flex;
+    width: 100%;
+    align-items: center;    
+    white-space: nowrap;text-overflow: ellipsis;overflow: hidden;
+    font-weight: 300;
+}
+.people-list-item-con .content .name{white-space: nowrap;text-overflow: ellipsis;overflow: hidden;color: var(--primary-text-black);font-weight: 400;}
+.people-list-item-con .content .divider{padding: 0 5px;color: var(--secondary-text-gray);}
+.people-list-item-con .content .email{white-space: nowrap;text-overflow: ellipsis;overflow: hidden;}
+
+.more-con{
+    display: flex;
+    padding: 0 0 0 5px;
+    align-items: center;
+}
+.more-con .more-icon{
+    cursor: pointer;
+    color: var(--icon-gray);
+}
+.more-con .more-icon:hover{
+    color: var(--primary-text-black);
+}
+.people-list-item-con.notEditable .more-con .more-icon{
+    cursor: auto;
+    color: var(--icon-gray);
+}
+
+::ng-deep .people-menu{
+    margin-top: 0 !important;
+    box-shadow: 0px 20px 30px rgba(34, 41, 55, 0.05) !important;
+    border-radius: 5px !important;
+    max-width: none !important;
+}
+::ng-deep .people-menu .mat-menu-panel{
+    max-width: none !important;
+}
+.menu-con{
+    padding: 0 15px 5px 15px;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+.option-item{
+    padding: 7px 0px;
+    cursor: pointer;
+    align-items: center;
+    display: flex;
+    color: var(--primary-text-black);
+    font-weight: 300;
+}
+.option-item:hover{
+    color: var(--primary-blue);
+}
+.list-item-icon{
+    width: 15px;
+    padding: 0 10px 0 0px;
+}
+
+
+::ng-deep .mat-simple-snackbar-action{
+    color: var(--assistant-yellow) !important;
+}
+::ng-deep .mat-simple-snackbar{
+    font-family: 'Lexend',sans-serif;
+    font-weight: 300;
+    color: var(--border-lightgray);
+}
+::ng-deep .mat-snack-bar-container{
+    background-color: var(--assistant-bg);
+}

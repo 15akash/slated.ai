@@ -1,0 +1,186 @@
+<div class="page-con">
+    <div class="menu-con">
+        <app-menu selectedPage="none"></app-menu>
+    </div>
+    <div class="schedule-con">
+        <div class="content-con">
+            <div class="left">
+                <div class="header">
+                    <app-back-btn [hideTxt]="true" (click)="onBackClick()"></app-back-btn>
+                </div>
+                <div class="tab-con">
+                    <div class="tab-header-con">
+                        <div class="tab-header" *ngFor="let item of tabItems;let i=index;"
+                            [ngClass]="{'highlighted':item._id==selectedTabId}" (click)="onTabClick(item, i)">
+                            <div class="tab-header-title">{{item.displayName}}</div>
+                            <div class="tab-highlighter"></div>
+                        </div>
+                    </div>
+                    <div class="tab-content-con" #tabContentCon>
+                        <form class="tab-content" [formGroup]="scheduleForm" *ngFor="let item of tabItems">
+                            <div *ngIf="item._id=='main'">
+                                <div style="margin-bottom: 15px;">
+                                    <app-type-selection [selectedItem]="gf.name.value"
+                                        (select)="onSelect($event,'name')" (clear)="onClearTypeSelect($event)">
+                                    </app-type-selection>
+                                    <div class="name-recos-con">
+                                        <div class="name-reco header" *ngIf="!!nameRecoOptions.length">title
+                                            suggestion: </div>
+                                        <div class="name-reco" *ngFor="let item of nameRecoOptions"
+                                            (click)="selectRecoTitle(item)">
+                                            {{item.displayName}}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="list-input-wrapper">
+                                    <div class="list-input-title">Duration</div>
+                                    <app-list-input class="list-input" [displayOptions]="durationOptions"
+                                        [selectedItem]="gf.duration.value" defaultIcon="focus-time"
+                                        (change)="onSelect($event,'duration')">
+                                    </app-list-input>
+                                </div>
+                                <div class="list-input-wrapper">
+                                    <div class="list-input-title">Location</div>
+                                    <app-list-input class="list-input" [displayOptions]="channelOptions"
+                                        [selectedItem]="gf.channel.value" defaultIcon="video"
+                                        (change)="onSelect($event,'channel')">
+                                    </app-list-input>
+                                </div>
+                                <div class="list-input-wrapper">
+                                    <div class="list-input-title">Add people</div>
+                                    <app-people-list-item [data]="creator" [nonRemovable]="true"></app-people-list-item>
+                                    <app-people-selection placeholder="Type name or email to search"
+                                        (select)="onSelectPeople($event)"></app-people-selection>
+                                    <div class="attendee-list-con" *ngIf="!!attendees.length">
+                                        <app-people-list-item *ngFor="let item of attendees" [data]="item"
+                                            (change)="onPeopleMoreClick($event)">
+                                        </app-people-list-item>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="additional-info-con" *ngIf="item._id=='more'">
+                                <div class="list-input-wrapper" style="display: none;">
+                                    <div class="list-input-title">Select your preference</div>
+                                    <app-list-input class="list-input" [displayOptions]="preferenceOptions"
+                                        [selectedItem]="preferenceOptions[0]" defaultIcon="briefcase"
+                                        (change)="onSelect($event,'preference')">
+                                    </app-list-input>
+                                </div>
+                                <div class="list-input-wrapper" style="display: none;">
+                                    <div class="list-input-title">Select your availability</div>
+                                    <app-list-input class="list-input" [displayOptions]="availabilityOptions"
+                                        [selectedItem]="availabilityOptions[0]" defaultIcon="briefcase"
+                                        (change)="onSelect($event,'availability')"></app-list-input>
+                                </div>
+                                <mat-form-field class="full-field" appearance="outline">
+                                    <textarea formControlName="description" matInput
+                                        placeholder='Meeting description if any' rows="3"></textarea>
+                                </mat-form-field>
+                                <div class="full-field" style="display: none;">
+                                    <div class="list-input-title">Meeting link name</div>
+                                    <mat-form-field class="form-field" appearance="outline">
+                                        <input type="text" matInput placeholder="Meeting link name" autocomplete="off"
+                                            spellcheck="false">
+                                    </mat-form-field>
+                                </div>
+                                <div class="full-field" style="display: none;">
+                                    <div class="list-input-title">Give access to</div>
+                                    <app-list-input class="list-input" [displayOptions]="meetingAccessOptions"
+                                        [selectedItem]="meetingAccessOptions[0]" defaultIcon="link-2"
+                                        (change)="onSelect($event,'meetingAccess')">
+                                    </app-list-input>
+                                </div>
+                                <div class="full-field" style="margin-top:30px;">
+                                    <div class="list-input-title" style="margin-bottom: 10px;">Set a color for this
+                                        meeting</div>
+                                    <app-color-input [selectedColor]="gf.color.value"
+                                        (change)="onSelect($event,'color')"></app-color-input>
+                                </div>
+                            </div>
+                            <div class="additional-info-con" *ngIf="item._id=='advanced'">
+                                <div class="list-input-wrapper">
+                                    <div class="list-input-title">Schedule</div>
+                                    <app-list-input class="list-input" [displayOptions]="withinDateOptions"
+                                        [selectedItem]="defaultWithinDate" defaultIcon="calendar"
+                                        (change)="onSelect($event,'withinDate')">
+                                    </app-list-input>
+                                </div>
+                                <div class="list-input-wrapper">
+                                    <div class="list-input-title">Schedule after</div>
+                                    <app-list-input class="list-input" [displayOptions]="scheduleAfterOptions"
+                                        [selectedItem]="defaultScheduleAfter" defaultIcon="calendar"
+                                        (change)="onSelect($event,'scheduleAfter')">
+                                    </app-list-input>
+                                </div>
+                                <div class="list-input-wrapper">
+                                    <div class="list-input-title">Buffer time before</div>
+                                    <app-list-input class="list-input" [displayOptions]="bufferTimeBeforeOptions"
+                                        [selectedItem]="defaultBufferTimeBefore" defaultIcon="calendar"
+                                        (change)="onSelect($event,'bufferTimeBefore')">
+                                    </app-list-input>
+                                </div>
+                                <div class="list-input-wrapper">
+                                    <div class="list-input-title">Buffer time after</div>
+                                    <app-list-input class="list-input" [displayOptions]="bufferTimeAfterOptions"
+                                        [selectedItem]="defaultBufferTimeAfter" defaultIcon="calendar"
+                                        (change)="onSelect($event,'bufferTimeAfter')">
+                                    </app-list-input>
+                                </div>
+
+                                <!-- <div class="list-input-wrapper">
+                                    <div class="list-input-title">Auto-reschedulable</div>
+                                    <app-list-input class="list-input" [displayOptions]="movableOptions"
+                                        [selectedItem]="movableOptions[0]" defaultIcon="clock"
+                                        (change)="onSelect($event,'movable')">
+                                    </app-list-input>
+                                </div> -->
+
+                                <mat-slide-toggle formControlName="activeListening" class="slide-input"
+                                    [color]="'primary'" [checked]="true" [disableRipple]="true">I am actively involved
+                                    in this meeting
+                                </mat-slide-toggle>
+                                <mat-slide-toggle style="display: none;" class="slide-input" [color]="'primary'"
+                                    [checked]="false" [disabled]="false" [disableRipple]="true">Invitees can
+                                    reschedule</mat-slide-toggle>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="right">
+                <div class="wait-con" [ngClass]="{'loading':isLoadingBestTime}">
+                    <mat-spinner class="spinner" diameter="30" strokeWidth="1" color="primary"></mat-spinner>
+                    <div class="wait-txt">Getting best times...</div>
+                </div>
+                <div class="calendar-hold">
+                    <div class="title">Suggested times</div>
+                    <app-time-slot class="timeslot-list-item-con" theme="dark" *ngFor="let item of gf.timeslots.value"
+                        [data]="item" [isSelected]="!!item.isSelected" (select)="onSelect($event,'timeslot')">
+                    </app-time-slot>
+                </div>
+            </div>
+        </div>
+        <div class="action-con">
+            <div class="col1">
+                <app-list-input style="display: none;" class="list-input" [displayOptions]="schedulingTypeOptions"
+                    [selectedItem]="schedulingTypeOptions[0]" defaultIcon="briefcase"
+                    (change)="onSelect($event,'schedulingType')"></app-list-input>
+                <div class="dummy list-input"></div>
+            </div>
+            <div class="col2">
+                <button class="white-btn narrow action-btn" type="button" mat-button (click)="generateMeetingLink()"
+                    [disabled]="!scheduleForm.valid">
+                    Generate meeting link
+                </button>
+                <button class="white-btn narrow action-btn" type="button" mat-button (click)="startScheduleNow()"
+                    [disabled]="!scheduleForm.valid || gf.hostTimeslots.value.length!=1">
+                    Schedule now
+                </button>
+                <button class="blue-btn narrow action-btn" type="button" mat-button (click)="startInviteEmail()"
+                    [disabled]="!scheduleForm.valid || gf.attendees.value.length<=1">
+                    Invite via email
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+<div class="suggestion-con" [ngClass]="{'last-item':last}">
+    <div class="title-con">
+        <div class="title">{{suggestion.title}}</div>
+        <mat-icon class="close-icon" svgIcon="close" aria-hidden="false" aria-label="close svg icon"
+            (click)="onClickClose($event)">
+        </mat-icon>
+    </div>
+    <div class="text" [innerHTML]="suggestion.displayHTML"></div>
+    <div class="btn-con">
+        <div *ngFor="let item of btns" class="btn" (click)="onClickBtn(item)" [ngClass]="{
+            'yellow':item.color=='yellow',
+            'white':item.color=='white'
+        }">
+            {{item.displayText}}
+        </div>
+        <!-- <div class="btn yellow" (click)="onClickDismiss()">Dismiss</div>
+        <div class="btn yellow" (click)="onClickYes()">Yes</div>
+        <div class="btn white" (click)="onClickRemind()">Remind Later</div> -->
+    </div>
+</div>

@@ -1,0 +1,13 @@
+<div class="star-con" [ngClass]="{'not-editable':notEditable}" (click)="onClick()">
+    <mat-icon *ngIf="value==2" class="star-icon value2" svgIcon="star" aria-hidden="false" aria-label="svg icon">
+    </mat-icon>
+    <mat-icon *ngIf="value==1" class="star-icon value1" svgIcon="half_star" aria-hidden="false" aria-label="svg icon">
+    </mat-icon>
+    <mat-icon *ngIf="value==0" class="star-icon value0" svgIcon="zero_star" aria-hidden="false" aria-label="svg icon">
+    </mat-icon>
+    <div class="overlay">
+        <div class="click-overlay click-overlay-0"></div>
+        <div class="click-overlay click-overlay-1"></div>
+        <div class="click-overlay click-overlay-2"></div>
+    </div>
+</div>

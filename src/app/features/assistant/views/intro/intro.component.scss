@@ -1,0 +1,29 @@
+.view-con{
+    width: 100%;
+    box-sizing: border-box;    
+}
+.suggestion-list-con{
+    height: 32vh;
+    overflow-y: auto;
+}
+.speech-bubble{
+    width: 61%;
+    height: 13%;
+    position: absolute;
+    bottom: 36vh;
+    left: 19.5%;
+}
+#rocket-man{
+    width: 80%;
+    position: absolute;
+    bottom: 6vh;
+    margin-left: 10%;
+}
+
+.no-suggestion-msg{
+    padding: 0 20px;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;    
+}
+

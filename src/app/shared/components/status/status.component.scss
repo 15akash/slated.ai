@@ -1,0 +1,29 @@
+.status-con{
+    padding: 5px;
+    border-radius: 5px;
+    margin: 0 10px;    
+    text-align: center;
+    max-width: 100px;
+}
+.status-con.yellow{
+    color: var(--status-yellow);
+    background-color: var(--status-yellow-bg);
+}
+.status-con.blue{
+    color: var(--status-blue);
+    background-color: var(--status-blue-bg);
+}
+.status-con.green{
+    color: var(--status-green);
+    background-color: var(--status-green-bg);
+}
+.status-con.orange{
+    color: var(--status-orange);
+    background-color: var(--status-orange-bg);
+}
+
+.status-con.no-border{
+    background-color: transparent;
+}
+
+

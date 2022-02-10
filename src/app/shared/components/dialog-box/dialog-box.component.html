@@ -1,0 +1,31 @@
+<div class="dialog-con">
+    <h1 mat-dialog-title>{{data.title}}</h1>
+    <div mat-dialog-content>
+        <div class="msg" *ngIf="!!data.msg" [innerHTML]="data.msg"></div>
+        <div class="link" *ngIf="!!data.link">
+            <mat-icon class="link-icon" matSuffix svgIcon="link-2" aria-hidden="false" aria-label="SVG icon"></mat-icon>
+            <span>{{data.link}}</span>
+            <mat-icon class="copy-icon" matSuffix svgIcon="copy" aria-hidden="false" aria-label="SVG icon"
+                matTooltip="Copy link" [matTooltipPosition]="'below'" (click)="copyLink($event)">
+            </mat-icon>
+        </div>
+    </div>
+    <div style="flex:1"></div>
+    <div mat-dialog-actions *ngIf="!data.btns || (data.btns && !data.btns.length)">
+        <div class="btn-con2" style="display:flex;">
+            <button type="button" class="blue-btn btn" mat-button [mat-dialog-close]="'ok'" cdkFocusInitial>Ok</button>
+        </div>
+    </div>
+    <div mat-dialog-actions *ngIf="data.btns && !!data.btns.length">
+        <div class="btn-con" *ngFor="let btn of data.btns;let i=index;">
+            <div class="btn-con2" [ngSwitch]="btn.type">
+                <button class="blue-btn btn" *ngSwitchCase="'positive'" mat-flat-button
+                    (click)="onBtnClick(btn)">{{btn.btnTitle}}</button>
+                <button class="white-btn btn" *ngSwitchCase="'neutral'" mat-flat-button
+                    (click)="onBtnClick(btn)">{{btn.btnTitle}}</button>
+                <button class="red-btn btn" *ngSwitchCase="'negative'" mat-flat-button
+                    (click)="onBtnClick(btn)">{{btn.btnTitle}}</button>
+            </div>
+        </div>
+    </div>
+</div>

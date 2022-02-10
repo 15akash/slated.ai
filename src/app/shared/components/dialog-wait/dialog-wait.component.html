@@ -1,0 +1,9 @@
+<div class="wait-con" [ngClass]="{'large':size=='large','medium':size=='medium','small':size=='small'}">
+    <mat-spinner *ngIf="type=='mat-spinner'" diameter="30" strokeWidth="1" color="primary"></mat-spinner>
+    <img *ngIf="type=='logo-spinner'" class="logo-spinner" src="../../../../assets/logos/s-logo.png" alt="s-logo">
+    <img *ngIf="type=='color-spinner'" class="color-spinner" src="../../../../assets/wait/wait_yellow.svg" alt="wait">
+    <h1 mat-dialog-title>{{data.title||""}}</h1>
+    <div class="msg-txt" mat-dialog-content>
+        {{data.msg||""}}
+    </div>
+</div>

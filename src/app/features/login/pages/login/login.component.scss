@@ -1,0 +1,40 @@
+@import '../../login.scss';
+
+.social-con{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+.social-btn{
+    border: 1px solid #E0E2EA;
+    box-sizing: border-box;
+    border-radius: 5px;
+    padding: 14px 16px;
+    display: flex;   
+    flex: 1;
+    justify-content: center;
+    max-width: 200px;
+    cursor: pointer;
+}
+.social-btn1{
+    margin: 0px 10px 0px 0;
+}
+.social-btn2{
+    margin: 0px 0px 0px 10px;
+}
+.social-btn:hover{
+    border: 1px solid var(--primary-blue);
+}
+.social-btn img{
+    width: 20px;
+    height: 20px;
+    margin: 0 10px;
+}
+.social-btn div{
+    color: var(--primary-text-black);
+    font-size: 16px;
+    line-height: 130%;
+    font-weight: 300;
+    margin-right: 10px;
+}
+

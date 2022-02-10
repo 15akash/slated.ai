@@ -1,0 +1,47 @@
+<div class="meeting-list-con" (click)="onSelect()">
+    <!-- <div class="highlight-bar"></div> -->
+    <div class="time-con">
+        <div class="from-time">{{fromTime}}</div>
+        <div class="to-time">{{toTime}}</div>
+        <div class="duration-time">{{duration}}</div>
+    </div>
+    <div class="meeting-con">
+        <div class="title">{{(data && data.name)||""}}</div>
+        <div class="calendar-title" *ngIf="data && data.status">
+            <app-status [status]="data.status"></app-status>
+        </div>
+    </div>
+    <div class="people-con">
+        <app-avatar *ngFor="let item of visibleAttendees" class="avatar" [data]="item"></app-avatar>
+        <app-avatar *ngIf="hiddenAttendees.length>0" class="avatar" displayText="hiddenAttendeesDisplay">
+        </app-avatar>
+    </div>
+    <div class="note-con" style="display: none;">
+        <app-note-icon class="icon"></app-note-icon>
+        <app-mic-icon class="icon"></app-mic-icon>
+    </div>
+    <div class="channel-con">
+        <app-video-icon class="icon" style="display: none;"></app-video-icon>
+        <app-location-icon class="icon" style="display: none;" (click)="onLocationClick()"></app-location-icon>
+    </div>
+    <div class="more-con">
+        <mat-icon class="more-icon" svgIcon="more" aria-hidden="false" aria-label="more svg icon"
+            [matMenuTriggerFor]="meetingMenu" (menuOpened)="onOpenMenu()" (menuClosed)="onCloseMenu()">
+        </mat-icon>
+    </div>
+</div>
+
+
+<mat-menu #meetingMenu="matMenu" xPosition="before" yPosition="below" class="meeting-menu">
+    <div class="menu-con" (click)="onMenuClick($event)">
+        <section class="options-con" #scrollCon>
+            <div class="option-item" *ngFor="let item of moreOptions;let i=index;"
+                [ngClass]="{'highlighted':isMenuOpen}" (click)="onMoreItemSelect(item, i)">
+                <mat-icon class="list-item-icon" [ngClass]="{'open':isMenuOpen}" svgIcon="{{item.icon}}"
+                    aria-hidden="false" aria-label="list svg icon">
+                </mat-icon>
+                <span>{{item.displayName}}</span>
+            </div>
+        </section>
+    </div>
+</mat-menu>

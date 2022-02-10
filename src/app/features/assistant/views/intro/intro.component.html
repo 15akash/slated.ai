@@ -1,0 +1,11 @@
+<div class="view-con">
+    <div class="suggestion-list-con">
+        <app-suggestion *ngFor="let item of suggestions;let i=index" [suggestion]="item" class="suggestion-item"
+            [last]="i==suggestions.length-1" (btnAction)="onAction($event)"></app-suggestion>
+        <div class="no-suggestion-msg" *ngIf="suggestions.length==0">You're all caught up</div>
+    </div>
+    <div class="speech-bubble">
+        <app-speech-bubble></app-speech-bubble>
+    </div>
+    <img id="rocket-man" src="../../../../../assets/assistant/rocket-man.png" alt="rocket-man">
+</div>

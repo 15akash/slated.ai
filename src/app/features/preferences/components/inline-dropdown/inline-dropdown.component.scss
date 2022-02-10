@@ -1,0 +1,137 @@
+.inline-dropdown-con{
+    display: flex;
+    flex-flow: wrap;
+    justify-content: center;
+}
+.title{
+    font-weight: 300;
+    font-size: 18px;
+    color: var(--primary-text-gray);
+}
+.titleSuffix{
+    margin-left: 0px;
+}
+.inline-input-hold{
+    position: relative;
+    margin: 0 0 0 10px;
+    cursor: pointer;
+    // cursor: none;
+}
+.inline-input-hold:focus{
+    outline: none;
+    border: none;
+}
+.inline-placeholder{
+    color: var(--input-text-gray);
+    font-size: 18px;
+}
+.inline-input-hold img{
+    width: 100%;
+    max-height: 3px;
+    min-height: 2px;
+    position: absolute;
+    bottom:-25%;
+    display: none;
+}
+.inline-input-hold:focus img, .inline-input-hold:hover img{
+    display: block;
+}
+
+.cursor{
+    display: none;
+    position: absolute;
+    width: 20px;    
+    transform: translate(-50%, 0%);
+    pointer-events: none;    
+}
+.cursor img{
+    width: 100%;
+}
+
+
+.menu-con{
+    padding: 20px;
+    min-width: 350px;
+    max-height: 350px;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+.search-con{
+    height: 60px;
+}
+
+.options-con {
+    overflow-y: auto;
+    max-height: 320px;
+    padding: 5px 0;
+}
+.options-con div{
+    height: 40px;
+}
+::ng-deep .options-con .highlighted .mat-checkbox-label{
+    color: var(--primary-blue);
+    font-weight: 500 !important;
+}
+.options-con div:hover{
+    color: var(--primary-blue);
+}
+.no-options {
+    color: var(--primary-error-red);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 0;
+    text-align: center;
+    line-height: 1.5;
+}
+.btn-con{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    bottom: 0;
+    height: 40px;
+    background-color: white;
+    flex-direction: row;
+    padding-top: 15px;
+    box-sizing: content-box;
+    border-top: 1px solid #e7e7e7;
+}
+.done-btn{
+    height: auto;
+    font-size: 14px;
+    width: auto;
+    flex: 1;
+}
+
+.inline-selected-list{
+    color: var(--primary-text-black);
+    font-weight: 400;
+    font-size: 18px;
+    max-width: 50vw;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.clear-all{
+    padding-right: 20px;  
+    flex: 1;  
+}
+
+::ng-deep .inline-dropdown-menu.mat-menu-panel{
+      box-shadow: 0px 20px 30px rgba(34, 41, 55, 0.05);
+      border-radius: 5px !important;
+      margin-top: 15px;  
+      max-width: 400px;
+}
+::ng-deep .inline-dropdown-menu .mat-menu-content{
+    padding: 0 !important;
+}
+::ng-deep .dropdown-checkbox.single-select .mat-checkbox-inner-container{
+    display: none;
+}
+

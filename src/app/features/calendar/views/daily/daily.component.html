@@ -1,0 +1,53 @@
+<div class="calendar-parent">
+  <div class="daily-calendar">
+    <div class="days-container">
+      <mat-icon
+        class="left-icon"
+        svgIcon="down-arrow"
+        (click)="previousDate()"
+      ></mat-icon>
+      <div>{{ monthDisplay }}, {{ getDayToday() }}</div>
+      <mat-icon
+        class="right-icon"
+        svgIcon="down-arrow"
+        (click)="nextDate()"
+      ></mat-icon>
+    </div>
+
+    <div class="scroll-container" #scrollCon>
+      <div class="time-container">
+        <div *ngFor="let time of timeContainer">
+          {{ time }}
+        </div>
+      </div>
+      <div class="events-container">
+        <div *ngFor="let time of timeContainer">
+          <!-- <div class="time-div" *ngFor="let meeting of meetings"> -->
+          <!-- <div
+              class="meeting-container"
+              *ngIf="meeting.displayStartDate == currentDate.getDate()"
+            ></div> -->
+          <!-- <div
+              class="meeting-container"
+              *ngIf="meeting.displayStartDate === currentDate.getDate()"
+              [ngStyle]="{
+                'height.px': meeting.endDateTime,
+                'top.px': meeting.startDateTime
+              }"
+            >
+              <div class="meeting-content">
+                <div class="meeting-time">
+                  {{ meeting.startDateTime }} - {{ meeting.endDateTime }}
+                </div>
+                <div class="meeting-name">
+                  {{ meeting.name }}
+                </div>
+              </div>
+            </div> -->
+        </div>
+      </div>
+      <app-current-time-marker></app-current-time-marker>
+    </div>
+  </div>
+</div>
+<!-- </div> -->

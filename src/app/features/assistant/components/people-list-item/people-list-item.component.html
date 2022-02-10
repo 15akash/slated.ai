@@ -1,0 +1,13 @@
+<div class="people-list-con">
+    <div class="icon-con">
+        <app-avatar [data]="data"></app-avatar>
+    </div>
+    <div class="details-con">
+        <div class="title">{{data.name}}</div>
+        <div class="subtitle">
+            <span>{{data.title||data.email}}</span>
+            <span class="divider" *ngIf="data.timeZone">&bullet;</span>
+            <span *ngIf="data.timeZone">{{timeZoneDisplay}}</span>
+        </div>
+    </div>
+</div>

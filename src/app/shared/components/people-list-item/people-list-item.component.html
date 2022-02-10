@@ -1,0 +1,46 @@
+<div class="people-list-item-con" [ngClass]="{'no-border':displayType=='no-border', 'notEditable':notEditable}">
+    <app-avatar [data]="data" size="small"></app-avatar>
+    <div class="content">
+        <div class="name" *ngIf="!!data.name">{{data.name}}</div>
+        <div class="name" *ngIf="data.isYou" style="min-width: 32px;margin-left: 3px;"> (You)</div>
+        <div class="name" *ngIf="data.isCreator" style="min-width: 38px;margin-left: 3px;"> (Host)</div>
+        <div class="divider" *ngIf="!!data.name">&bullet;</div>
+        <div class="email">{{data.email}}</div>
+        <div class="divider" *ngIf="!!data.status">&bullet;</div>
+        <div *ngIf="!!showStatus && !!data.status" class="email">
+            <app-status [status]="data.status" displayType="no-border"></app-status>
+            <!-- {{data.status}} -->
+        </div>
+    </div>
+    <div style="padding: 0 5px;" matTooltip="Mark this person as important" [matTooltipPosition]="'below'"
+        *ngIf="!data.isYou && !notEditable">
+        <app-star-input class="star-" [notEditable]="!!data.isYou||nonRemovable||notEditable"
+            [value]="data.importance||0">
+        </app-star-input>
+    </div>
+    <div style="padding: 0 5px;" *ngIf="!data.isYou && notEditable">
+        <app-star-input class="star-" [notEditable]="notEditable" [value]="data.importance||0">
+        </app-star-input>
+    </div>
+    <div class="more-con" *ngIf="!notEditable">
+        <mat-icon class="more-icon" svgIcon="more" aria-hidden="false" aria-label="more svg icon"
+            [matMenuTriggerFor]="moreMenu" (menuOpened)="onOpenMenu()" (menuClosed)="onCloseMenu()">
+        </mat-icon>
+    </div>
+    <div class="more-con" *ngIf="notEditable">
+        <mat-icon class="more-icon" svgIcon="more" aria-hidden="false" aria-label="more svg icon">
+        </mat-icon>
+    </div>
+</div>
+<mat-menu #moreMenu="matMenu" xPosition="before" yPosition="below" class="people-menu">
+    <div class="menu-con" (click)="onMenuClick($event)">
+        <section class="options-con" #scrollCon>
+            <div class="option-item" *ngFor="let item of moreOptions;let i=index;" (click)="onMoreItemSelect(item, i)">
+                <mat-icon class="list-item-icon" [ngClass]="{'open':isMenuOpen}" svgIcon="{{item.icon}}"
+                    aria-hidden="false" aria-label="list svg icon">
+                </mat-icon>
+                <span>{{item.displayName}}</span>
+            </div>
+        </section>
+    </div>
+</mat-menu>

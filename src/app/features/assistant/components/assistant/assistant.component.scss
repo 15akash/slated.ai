@@ -1,0 +1,135 @@
+.assistant-con{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    border-radius: 10px 12px 10px 10px;
+    background: var(--assistant-bg);
+}
+.header-con{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 20px 40px 15px 20px;    
+    box-sizing: border-box;    
+    height: 50px;
+}
+.header-con .title{
+    width: 100%;
+    color: var(--assistant-text-white);
+    font-size: 18px;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 25px;
+    display: flex;
+    align-items: center;
+}
+.header-con .title.center{
+    justify-content: center;
+}
+
+.back-icon{
+    color: white;
+    transform: rotate(90deg);
+    padding-top: 10px;
+    cursor: pointer;
+}
+.back-icon:hover{
+    color: var(--assistant-yellow);
+}
+
+.more-con, .list-close-con{
+    width: 40px;
+    height: 40px;
+    background: var(--assistant-yellow);
+    border-radius: 0 10px 0 10px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.more-con:hover .more-icon{    
+    color: var(--primary-blue);
+}
+.list-close-con:hover .close-icon{
+    color: black;
+}
+.more-icon{
+    color: var(--assistant-bg);
+    width: 15px;
+}
+.close-icon{
+    width: 15px;
+    display: none;
+}
+.more-list-con{
+    position: absolute;
+    width: calc(100% - 20px);
+    top: 0px;
+    right: 0px;
+    background: var(--assistant-yellow);
+    padding: 15px;
+    box-sizing: border-box;
+    transition: all 0.15s ease-out;
+    transform: scale(0);
+    transform-origin: top right;
+    border-radius: 0px 100px 0px 100px;    
+    opacity: 0;
+}
+.more-list-con.open{
+    top: 0;
+    right: 0;
+    transform: scale(1);
+    border-radius: 0 10px 0 10px; 
+    opacity: 1;
+}
+.more-list-con.open .close-icon{
+    display: block;
+}
+.more-list-item{
+    display: flex;    
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+}
+.list-item-text{
+    color: var(--assistant-text-black);
+    padding-left: 10px;
+    font-size:12px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    font-weight: 300;
+}
+.list-icon{
+    color: var(--assistant-bg);
+    width: 16px;
+    min-width: 16px;
+}
+.more-list-item:hover .list-item-text, .more-list-item:hover .list-icon{
+    color: var(--primary-blue);
+}
+
+
+#chalkmark_bg_1{
+    width: 8%;
+    left: 0%;
+    position: absolute;
+    bottom: 4%;
+}
+#chalkmark_bg_2{
+    width: 17%;
+    right: 0;
+    position: absolute;
+    bottom: 25%;
+}
+.content-con{
+    width: 100%;
+    height: calc(100% - 50px);
+    overflow-y: auto;
+}
+

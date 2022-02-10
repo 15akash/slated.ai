@@ -1,0 +1,20 @@
+@import url(../../icons.scss);
+
+.icon-con .icon{
+    width: 17px;
+}
+
+.icon-con.color{
+    background-color: var(--icon-bg-lightgreen);
+}
+.icon-con.color .icon{
+    color: var(--icon-green);
+}
+
+.icon-con.highlighted{
+    //background-color: var(--icon-bg-lightgreen);
+    filter: saturate(2);
+}
+// .icon-con.highlighted .icon{
+//     color: var(--icon-green);
+// }

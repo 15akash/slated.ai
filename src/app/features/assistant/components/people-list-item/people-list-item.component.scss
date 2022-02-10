@@ -1,0 +1,31 @@
+.people-list-con{
+    display: flex;
+    align-items: center;
+    padding: 7.5px 0;
+}
+.calendar-icon{
+    color: white;
+    width: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.details-con{
+    padding-left: 15px;
+    width: 100%;
+}
+.title{
+    color: var(--assistant-text-white);
+    font-size: 14px;
+}
+.subtitle{
+    color: var(--assistant-text-gray);
+    padding-top: 5px;
+    font-size: 11px;
+}
+.subtitle .divider{
+    padding: 0 5px;
+}
+
+

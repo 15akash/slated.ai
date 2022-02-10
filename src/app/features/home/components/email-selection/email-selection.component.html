@@ -1,0 +1,57 @@
+<form class="search-form" [formGroup]="searchForm" autocomplete="off" [ngClass]="{'hovering':isHovering}"
+    (mouseover)="isHovering=true" (mouseout)="isHovering=false" #inputCon>
+    <mat-form-field class="people-field" appearance="outline" (menuOpened)="onOpenMenu()" (menuClosed)="onCloseMenu()"
+        [matMenuTriggerFor]="selectionMenu">
+        <mat-icon class="people-icon" matPrefix svgIcon="email2" aria-hidden="false" aria-label="svg icon">
+        </mat-icon>
+        <div class="email-chip-con" *ngIf="!!selectedItems.length">
+            <div class="email-chip" *ngFor="let item of selectedItems.slice(0,maxDisplayEmails)"
+                (click)="onClickEmail($event,item)">
+                <span>{{item.email}}</span>
+                <mat-icon class="remove-email-icon" matPrefix svgIcon="close" aria-hidden="false" aria-label="svg icon"
+                    (click)="onClickRemove($event,item)">
+                </mat-icon>
+            </div>
+            <div class="show-more-emails email-chip"
+                *ngIf="emailsCollapsed && this.selectedItems.length>maxDisplayEmails" (click)="expandEmails($event)">
+                +{{this.selectedItems.length-maxDisplayEmails}}
+            </div>
+            <div class="show-more-emails email-chip" *ngIf="!emailsCollapsed" (click)="onClickCollapseEmails($event)">
+                show fewer
+            </div>
+        </div>
+        <input type="text" placeholder="{{placeholder}}" aria-label="search" matInput formControlName="searchString"
+            #searchInputElement (focus)="onFocus()" (blur)="onBlur()" tabindex="{{tabindex*1}}" autocomplete="off"
+            spellcheck="true">
+        <mat-icon class="copy-icon" matSuffix svgIcon="copy" aria-hidden="false" aria-label="SVG icon"
+            matTooltip="Copy list of emails" [matTooltipPosition]="'below'" (click)="copyEmails($event)">
+        </mat-icon>
+
+        <!-- <mat-icon *ngIf="gf.searchString.value" class="close-icon" matSuffix svgIcon="close" aria-hidden="false"
+            aria-label="close svg icon" (click)="clearSearch()">
+        </mat-icon> -->
+    </mat-form-field>
+</form>
+<mat-menu class="people-selection-menu" #selectionMenu="matMenu" xPosition="after" yPosition="below">
+    <div class="menu-con" (click)="onMenuClick($event)" panelClass="people-menu-con"
+        [ngStyle]="{'min-width.px': (inputWidth-2),'max-width.px': (inputWidth-2)}">
+        <section class="options-con" #scrollCon>
+            <div class="option-item" *ngFor="let item of displayOptions;let i=index;"
+                [ngClass]="{'highlighted':isMenuOpen && (item._id==highlightId || i==highlightIdx)}"
+                (click)="onSelect(item, i)" (mouseover)="isHoveringId=item._id||''" (mouseout)="isHoveringId=''">
+                <app-avatar [data]="item" size="small"></app-avatar>
+                <div class="content">
+                    <div class="name" *ngIf="!!item.name">{{item.name}}</div>
+                    <div class="divider" *ngIf="!!item.name">&bullet;</div>
+                    <div class="email">{{item.email}}</div>
+                </div>
+            </div>
+            <div class="no-options" *ngIf="!displayOptions.length && !gf.searchString.value && !showWaiting">
+                No options
+            </div>
+            <div class="no-options" *ngIf="showWaiting && !displayOptions.length">
+                <mat-spinner diameter="20" strokeWidth="1" color="primary"></mat-spinner>
+            </div>
+        </section>
+    </div>
+</mat-menu>

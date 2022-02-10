@@ -1,0 +1,8 @@
+<div class="color-input-con">
+    <div class="color-box" *ngFor="let item of colorOptions" [ngStyle]="{'background-color':item.value}"
+        (click)="onSelectColor(item)">
+        <mat-icon [ngStyle]="{'opacity':item.value==selectedColor.value?1:0}" class="tick-icon" matPrefix
+            svgIcon="tick-white" aria-hidden="false" aria-label="SVG icon">
+        </mat-icon>
+    </div>
+</div>

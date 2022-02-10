@@ -1,0 +1,19 @@
+<form class="search-form" [formGroup]="searchForm" autocomplete="off"
+    [ngClass]="{'collapsed':isCollapsed, 'hovering':isHovering}" (mouseover)="isHovering=true"
+    (mouseout)="isHovering=false">
+    <mat-form-field class="search-field" appearance="outline">
+        <mat-icon *ngIf="!isHovering && !isFocused" class="search-icon" matPrefix svgIcon="search-gray"
+            aria-hidden="false" aria-label="search2 svg icon">
+        </mat-icon>
+        <mat-icon *ngIf="isHovering || isFocused" class="search-icon" matPrefix svgIcon="search-blue"
+            aria-hidden="false" aria-label="search2 svg icon"
+            matTooltip="{{(isCollapsed && !!toolTipForCollapse)?toolTipForCollapse:''}}" [matTooltipPosition]="'below'">
+        </mat-icon>
+        <input type="text" placeholder="{{placeholder}}" aria-label="search" matInput formControlName="searchString"
+            #searchInputElement (focus)="onFocus()" (blur)="onBlur()" tabindex="{{tabindex*1}}">
+        <mat-icon *ngIf="gf.searchString.value && !showSelectAll" class="close-icon" matSuffix svgIcon="close"
+            aria-hidden="false" aria-label="close svg icon" (click)="clearSearch()">
+        </mat-icon>
+        <span *ngIf="showSelectAll" class="blue-text-btn select-all" matSuffix (click)="onSelectAll()">select all</span>
+    </mat-form-field>
+</form>

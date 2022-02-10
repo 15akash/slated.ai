@@ -1,0 +1,23 @@
+.page-con {
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(180deg, #EFF4FF 0%, #FCFDFF 66.03%, #FFFFFF 100%), #FFFFFF;
+    position: relative;
+}
+.login-con {
+    width: 50vw;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    align-items: center;
+}
+#logo {
+    width: 25%;
+    margin: 30px 0;
+}
+.title{
+    color: var(--primary-text-black);
+    font-size: 40px;
+    font-weight: 500;
+    margin: 40px auto 50px auto;
+}

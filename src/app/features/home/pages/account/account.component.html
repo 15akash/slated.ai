@@ -1,0 +1,40 @@
+<div class="page-con">
+    <div class="menu-con">
+        <app-menu selectedPage="account"></app-menu>
+    </div>
+    <div class="account-con">
+        <div class="content-con">
+            <div class="left">
+                <div class="header">
+                    <app-back-btn [hideTxt]="true" (click)="onBackClick()"></app-back-btn>
+                    <span>My account</span>
+                </div>
+                <app-connect-google-calendar></app-connect-google-calendar>
+            </div>
+            <div class="right">
+                <div class="profile-con" *ngIf="user">
+                    <div class="field-con photo-field">
+                        <app-avatar [data]="user" size="large"></app-avatar>
+                    </div>
+                    <div class="field-con name-field" *ngIf="user.name">Name: <span class="value">{{user.name}}</span>
+                    </div>
+                    <div class="field-con email-field">Email: <span class="value">{{user.email}}</span></div>
+                    <div class="field-con signup-field">Signup via: <span class="value">{{user.signupType}}</span></div>
+                    <div class="field-con signup-field">Created on: <span class="value">{{createdAt}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="action-con">
+            <div class="col1"></div>
+            <div class="col2">
+                <button class="white-btn narrow action-btn" type="button" mat-button (click)="onClickLogout()">
+                    Logout
+                </button>
+                <button class="red-btn narrow action-btn" type="button" mat-button (click)="onClickDeleteAccount()">
+                    Delete account
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
